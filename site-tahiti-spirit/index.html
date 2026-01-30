@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tahiti Spirit - sono rent | Nantes</title>
+  <meta name="description" content="Location de sono, lumière, consoles X32 et in-ear à Nantes : packs soirée, concert, DJ, assos. Demande de devis rapide." />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --muted:#a7b0c0;
+      --text:#f4f6fb;
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --line:rgba(255,255,255,.08);
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(167,139,250,.18), transparent 60%),
+                  radial-gradient(1200px 600px at 80% 20%, rgba(110,231,255,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,12,16,.7);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 24px; max-width:1100px; margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,.9), rgba(167,139,250,.9));
+      box-shadow: 0 10px 30px rgba(110,231,255,.15);
+    }
+    .brand strong{font-size:15px;letter-spacing:.2px}
+    .brand span{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{
+      padding:8px 10px; border-radius:12px;
+      text-decoration:none; color:var(--muted);
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{border-color:var(--line);color:var(--text)}
+    .hero{
+      padding:48px 0 22px;
+      display:grid; gap:20px;
+      grid-template-columns: 1.25fr .75fr;
+      align-items:stretch;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:42px; line-height:1.08;
+      letter-spacing:-.6px;
+    }
+    .hero p{margin:0;color:var(--muted);font-size:16px;max-width:60ch}
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight:600;
+    }
+    .btn:hover{background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.12)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.9));
+      color:#091018;
+    }
+    .card{
+      background: rgba(18,20,27,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroCard{padding:18px}
+    .heroCard h3{margin:0 0 8px;font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+    .heroCard ul{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .pill{
+      display:flex; align-items:flex-start; gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .dot{width:10px;height:10px;border-radius:999px;margin-top:6px;background: var(--ok)}
+    .dot.warn{background: var(--warn)}
+    .dot.info{background: var(--accent)}
+    .pill b{font-size:13px}
+    .pill small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
+
+    section{padding:28px 0}
+    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:14px}
+    .sectionHead h2{margin:0;font-size:22px}
+    .sectionHead p{margin:0;color:var(--muted);max-width:70ch}
+
+    .grid{display:grid;grid-template-columns: repeat(3, minmax(0, 1fr));gap:14px;}
+    .pack{padding:16px;position:relative;overflow:hidden;}
+    .tag{
+      position:absolute; top:14px; right:14px;
+      padding:6px 10px;border-radius: 999px;
+      font-size:12px;font-weight:700;
+      background: rgba(110,231,255,.12);
+      border:1px solid rgba(110,231,255,.22);
+      color: var(--accent);
+    }
+    .pack h3{margin:0 0 8px;font-size:16px}
+    .pack .price{font-size:26px;font-weight:800;margin:8px 0 10px;letter-spacing:-.4px;}
+    .pack .price span{font-size:13px;color:var(--muted);font-weight:600;margin-left:6px}
+    .pack ul{margin:0;padding-left:18px;color:var(--muted)}
+    .pack li{margin:4px 0}
+    .pack .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
+    .input, .select{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      outline:none;
+      min-width: 220px;
+    }
+    .select{min-width: 190px}
+    table{
+      width:100%;
+      border-collapse: collapse;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(18,20,27,.55);
+    }
+    th, td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:14px;
+    }
+    th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+    tr:hover td{background: rgba(255,255,255,.03)}
+    .muted{color:var(--muted)}
+
+    .kpiRow{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top:14px;
+    }
+    .kpi{
+      padding:14px 14px 12px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+    }
+    .kpi b{display:block;font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.35px}
+    .kpi span{display:block;margin-top:6px;font-size:18px;font-weight:800}
+    .kpi small{display:block;margin-top:4px;color:var(--muted)}
+
+    .twoCols{display:grid; gap:14px; grid-template-columns: 1fr 1fr; align-items:start;}
+    .box{padding:16px}
+    .box h3{margin:0 0 8px;font-size:16px}
+    .box p{margin:0;color:var(--muted)}
+    .box ul{margin:10px 0 0; padding-left:18px;color:var(--muted)}
+    .box li{margin:4px 0}
+    form{display:grid; gap:10px; margin-top:10px}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    textarea{min-height:110px;resize:vertical}
+
+    footer{
+      padding:28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size:13px;
+    }
+    .fineprint{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background: rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+    }
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns: 1fr; padding-top:28px}
+      .grid{grid-template-columns: 1fr}
+      .kpiRow{grid-template-columns: 1fr 1fr}
+      .twoCols{grid-template-columns: 1fr}
+      .row{grid-template-columns: 1fr}
+      .input,.select{min-width: 0; width:100%}
+      .controls{width:100%; justify-content:stretch}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <strong>Tahiti Spirit - sono rent</strong>
+        <span>Nantes • Sono • Lumière • Consoles X32 • In-ear</span>
+      </div>
+    </a>
+
+    <nav class="navlinks">
+      <a href="#packs">Packs</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#options">Options</a>
+      <a href="#devis">Devis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="container">
+
+  <section class="hero">
+    <div>
+      <h1>Location sono, lumière & consoles à Nantes — prête à jouer.</h1>
+      <p>
+        Packs adaptés à ton événement (soirée, concert, DJ, association).
+        Matériel pro + conseils de mise en place. Livraison et installation en option.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="#devis">Demander un devis</a>
+        <a class="btn" href="#packs">Voir les packs</a>
+        <a class="btn" href="#tarifs">Tarifs à l’unité</a>
+      </div>
+
+      <div class="kpiRow">
+        <div class="kpi">
+          <b>Sono</b>
+          <span>Jusqu’à 4 subs 18"</span>
+          <small>Alto TS18S (x4)</small>
+        </div>
+        <div class="kpi">
+          <b>Lumière</b>
+          <span>Lyres + PAR LED</span>
+          <small>MaxiSpot 30 + Party PAR</small>
+        </div>
+        <div class="kpi">
+          <b>Consoles</b>
+          <span>Behringer X32</span>
+          <small>X32 + X32 Rack</small>
+        </div>
+        <div class="kpi">
+          <b>In-ear</b>
+          <span>Xvive U4</span>
+          <small>Sennheiser IE100 Pro</small>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card heroCard">
+      <h3>Ce que tu obtiens</h3>
+      <ul>
+        <li class="pill">
+          <span class="dot info"></span>
+          <div>
+            <b>Matériel pro & entretenu</b>
+            <small>Testé et vérifié avant chaque location</small>
+          </div>
+        </li>
+        <li class="pill">
+          <span class="dot"></span>
+          <div>
+            <b>Packs “tout compris”</b>
+            <small>Sono + micros + (option) lumière / X32 / in-ear</small>
+          </div>
+        </li>
+        <li class="pill">
+          <span class="dot warn"></span>
+          <div>
+            <b>Caution + contrat</b>
+            <small>Simple et sécurisé</small>
+          </div>
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- PACKS -->
+  <section id="packs">
+    <div class="sectionHead">
+      <div>
+        <h2>Packs recommandés</h2>
+        <p class="muted">Tu choisis un pack, et j’ajuste selon la salle, le public et l’usage (DJ, live, asso…).</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card pack">
+        <div class="tag">Populaire</div>
+        <h3>Pack “Soirée 80–120 pers.”</h3>
+        <div class="price">90 € <span>/ jour</span></div>
+        <ul>
+          <li>2 × Alto TS415 (15")</li>
+          <li>2 × pieds + câbles</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack Soirée 80–120 pers. (90€/jour)')">Choisir</button>
+          <a class="btn" href="#tarifs">Détail</a>
+        </div>
+      </article>
+
+      <article class="card pack">
+        <div class="tag">Bass +</div>
+        <h3>Pack “Soirée 150–200 pers.”</h3>
+        <div class="price">150 € <span>/ jour</span></div>
+        <ul>
+          <li>2 × TS415 (15")</li>
+          <li>2 × subs TS18S (18")</li>
+          <li>Pieds/barres + câbles</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack Soirée 150–200 pers. (150€/jour)')">Choisir</button>
+          <a class="btn" href="#options">Options</a>
+        </div>
+      </article>
+
+      <article class="card pack">
+        <div class="tag">Groupe</div>
+        <h3>Pack “Concert / Groupe”</h3>
+        <div class="price">180 € <span>/ jour</span></div>
+        <ul>
+          <li>2 × TS412 + 2 × TS18S</li>
+          <li>4 × SM58 + 2 × DI</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack Concert / Groupe (180€/jour)')">Choisir</button>
+          <a class="btn" href="#devis">Devis</a>
+        </div>
+      </article>
+
+      <article class="card pack">
+        <div class="tag">PRO</div>
+        <h3>Pack “Concert PRO (X32 + In-ear)”</h3>
+        <div class="price">250 € <span>/ jour</span></div>
+        <ul>
+          <li>Behringer X32 ou X32 Rack</li>
+          <li>Sono + micros + DI</li>
+          <li>In-ear (Xvive U4 + IE100 Pro)</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack Concert PRO (X32 + In-ear) – 250€/jour')">Choisir</button>
+          <a class="btn" href="#tarifs">Tarifs</a>
+        </div>
+      </article>
+
+      <article class="card pack">
+        <div class="tag">Lumière</div>
+        <h3>Pack “Lumière”</h3>
+        <div class="price">Dès 45 € <span>/ jour</span></div>
+        <ul>
+          <li>6 × PAR LED (pack)</li>
+          <li>ou 4 × lyres Spot (pack)</li>
+          <li>+ fumée en option</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack Lumière (PAR/lyres) – dès 45€/jour')">Choisir</button>
+          <a class="btn" href="#tarifs">Détail</a>
+        </div>
+      </article>
+
+      <article class="card pack">
+        <div class="tag">In-ear</div>
+        <h3>Pack “6 micros SM58”</h3>
+        <div class="price">45 € <span>/ jour</span></div>
+        <ul>
+          <li>6 × Shure SM58</li>
+          <li>Pieds/câbles selon besoin</li>
+        </ul>
+        <div class="actions">
+          <button class="btn primary" onclick="prefillDevis('Pack 6 micros SM58 (45€/jour)')">Choisir</button>
+          <a class="btn" href="#devis">Contact</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section id="tarifs">
+    <div class="sectionHead">
+      <div>
+        <h2>Tarifs à l’unité</h2>
+        <p class="muted">Tarifs pour une location <b>à la journée (24h)</b>. Prix dégressifs possibles à partir de 2 jours.</p>
+      </div>
+
+      <div class="controls">
+        <input id="search" class="input" type="search" placeholder="Rechercher (ex: X32, lyre, U4…)" />
+        <select id="category" class="select">
+          <option value="all">Toutes catégories</option>
+          <option value="enceintes">Enceintes</option>
+          <option value="subs">Subs</option>
+          <option value="micros">Micros</option>
+          <option value="consoles">Consoles</option>
+          <option value="inear">In-ear</option>
+          <option value="lumieres">Lumière / Fumée</option>
+          <option value="stands">Pieds / supports</option>
+          <option value="studio">Studio / Monitoring</option>
+          <option value="accessoires">Accessoires</option>
+        </select>
+      </div>
+    </div>
+
+    <table aria-label="Tarifs de location">
+      <thead>
+        <tr>
+          <th>Équipement</th>
+          <th>Catégorie</th>
+          <th>Prix / jour</th>
+          <th class="muted">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="tarifsBody">
+        <!-- Enceintes -->
+        <tr data-cat="enceintes">
+          <td><b>Alto TS415 (15")</b></td>
+          <td>Enceintes</td>
+          <td><b>45 €</b></td>
+          <td class="muted">Pack x2 : 80 €</td>
+        </tr>
+        <tr data-cat="enceintes">
+          <td><b>Alto TS412 (12")</b></td>
+          <td>Enceintes</td>
+          <td><b>40 €</b></td>
+          <td class="muted">Pack x2 : 70 €</td>
+        </tr>
+
+        <!-- Subs -->
+        <tr data-cat="subs">
+          <td><b>Alto TS18S (sub 18")</b></td>
+          <td>Subs</td>
+          <td><b>60 €</b></td>
+          <td class="muted">Pack x2 : 100 € • Pack x4 : 180 €</td>
+        </tr>
+
+        <!-- Consoles -->
+        <tr data-cat="consoles">
+          <td><b>Behringer X32</b></td>
+          <td>Consoles</td>
+          <td><b>70 €</b></td>
+          <td class="muted">Console 32 canaux (pro)</td>
+        </tr>
+        <tr data-cat="consoles">
+          <td><b>Behringer X32 Rack</b></td>
+          <td>Consoles</td>
+          <td><b>50 €</b></td>
+          <td class="muted">Idéal groupe / in-ear</td>
+        </tr>
+
+        <!-- In-ear -->
+        <tr data-cat="inear">
+          <td><b>Xvive U4 (émetteur + 1 récepteur)</b></td>
+          <td>In-ear</td>
+          <td><b>20 €</b></td>
+          <td class="muted">Retours in-ear sans fil</td>
+        </tr>
+        <tr data-cat="inear">
+          <td><b>Récepteur Xvive U4R (supplémentaire)</b></td>
+          <td>In-ear</td>
+          <td><b>10 €</b></td>
+          <td class="muted">Pour ajouter des musiciens</td>
+        </tr>
+        <tr data-cat="inear">
+          <td><b>Sennheiser IE100 Pro (in-ear)</b></td>
+          <td>In-ear</td>
+          <td><b>10 €</b></td>
+          <td class="muted">Écoute intra</td>
+        </tr>
+
+        <!-- Micros -->
+        <tr data-cat="micros">
+          <td><b>Shure SM58</b></td>
+          <td>Micros</td>
+          <td><b>10 €</b></td>
+          <td class="muted">Pack 6 : 45 €</td>
+        </tr>
+        <tr data-cat="micros">
+          <td><b>Shure SM Two (pack)</b></td>
+          <td>Micros</td>
+          <td><b>12 €</b></td>
+          <td class="muted">Micro chant premium</td>
+        </tr>
+
+        <!-- Lumière / fumée -->
+        <tr data-cat="lumieres">
+          <td><b>Lyre Spot MaxiSpot 30</b></td>
+          <td>Lumière / Fumée</td>
+          <td><b>25 €</b></td>
+          <td class="muted">Pack x4 : 80 €</td>
+        </tr>
+        <tr data-cat="lumieres">
+          <td><b>PAR LED Party PAR 123</b></td>
+          <td>Lumière / Fumée</td>
+          <td><b>10 €</b></td>
+          <td class="muted">Pack x6 : 45 €</td>
+        </tr>
+        <tr data-cat="lumieres">
+          <td><b>Machine à fumée Chauvet Hurricane 1200</b></td>
+          <td>Lumière / Fumée</td>
+          <td><b>15 €</b></td>
+          <td class="muted">Liquide possible en option</td>
+        </tr>
+
+        <!-- Studio -->
+        <tr data-cat="studio">
+          <td><b>Pack KRK RP5 G5 (paire) + Sub S8.4</b></td>
+          <td>Studio / Monitoring</td>
+          <td><b>35 €</b></td>
+          <td class="muted">DJ / home-studio / répétitions</td>
+        </tr>
+
+        <!-- Pieds / supports -->
+        <tr data-cat="stands">
+          <td><b>Pied d’enceinte</b></td>
+          <td>Pieds / supports</td>
+          <td><b>5 €</b></td>
+          <td class="muted">Selon pack / dispo</td>
+        </tr>
+        <tr data-cat="stands">
+          <td><b>Barre M20 (sub → enceinte)</b></td>
+          <td>Pieds / supports</td>
+          <td><b>5 €</b></td>
+          <td class="muted">Recommandé avec subs</td>
+        </tr>
+
+        <!-- Accessoires -->
+        <tr data-cat="accessoires">
+          <td><b>DI (1 canal)</b></td>
+          <td>Accessoires</td>
+          <td><b>4 €</b></td>
+          <td class="muted">Clavier / guitare / basse</td>
+        </tr>
+        <tr data-cat="accessoires">
+          <td><b>Pack câbles (selon besoin)</b></td>
+          <td>Accessoires</td>
+          <td><b>5–10 €</b></td>
+          <td class="muted">XLR / jack / DMX</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- OPTIONS -->
+  <section id="options">
+    <div class="sectionHead">
+      <div>
+        <h2>Options</h2>
+        <p class="muted">Pour simplifier la vie du client (et augmenter ton panier moyen).</p>
+      </div>
+    </div>
+
+    <div class="twoCols">
+      <div class="card box">
+        <h3>Logistique</h3>
+        <ul>
+          <li><b>Livraison (≤ 20 km)</b> : 30 €</li>
+          <li><b>Installation / réglage</b> : +20 €</li>
+          <li><b>Technicien sur place</b> : 25 €/h</li>
+        </ul>
+        <p class="muted" style="margin-top:10px;">Astuce : forfait “livraison + installation” = 45 €.</p>
+      </div>
+      <div class="card box">
+        <h3>Remises (exemples)</h3>
+        <ul>
+          <li><b>2 jours</b> : -10% sur le total</li>
+          <li><b>3 jours</b> : -15%</li>
+          <li><b>Semaine</b> : sur devis</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVIS -->
+  <section id="devis">
+    <div class="sectionHead">
+      <div>
+        <h2>Demande de devis</h2>
+        <p class="muted">Le bouton ouvre un email pré-rempli vers <b>tahitispiritsonorent@gmail.com</b>.</p>
+      </div>
+    </div>
+
+    <div class="twoCols">
+      <div class="card box">
+        <h3>Contact</h3>
+        <p class="muted" id="contactBlock"></p>
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" id="mailtoBtn" href="#">Envoyer un email</a>
+        </div>
+      </div>
+
+      <div class="card box">
+        <h3>Formulaire</h3>
+        <form id="quoteForm">
+          <div class="row">
+            <input class="input" name="name" placeholder="Nom" required />
+            <input class="input" name="phone" placeholder="Téléphone (optionnel)" />
+          </div>
+          <div class="row">
+            <input class="input" name="date" placeholder="Date (ex: 12/02/2026)" required />
+            <input class="input" name="location" placeholder="Lieu (Nantes / salle / adresse)" required />
+          </div>
+          <div class="row">
+            <select class="select" name="need" required>
+              <option value="">Besoin principal</option>
+              <option>Packs soirée</option>
+              <option>Concert / groupe</option>
+              <option>Concert PRO (X32 + in-ear)</option>
+              <option>Lumières</option>
+              <option>Consoles (X32)</option>
+              <option>In-ear</option>
+              <option>Autre</option>
+            </select>
+            <select class="select" name="service">
+              <option value="">Service (optionnel)</option>
+              <option>Retrait</option>
+              <option>Livraison</option>
+              <option>Livraison + installation</option>
+              <option>Technicien sur place</option>
+            </select>
+          </div>
+          <textarea class="input" name="details" placeholder="Détails (nb de personnes, intérieur/extérieur, DJ/live, matériel souhaité…)" required></textarea>
+          <button type="submit" class="btn primary">Ouvrir l’email de demande de devis</button>
+          <p class="muted" style="margin:0;font-size:12px;">Ton logiciel email s’ouvre avec le message pré-rempli.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fineprint">
+      <div class="badge">✅ Nantes • ✅ Sono + Lumière + X32 • ✅ Devis rapide</div>
+      <div>© <span id="year"></span> Tahiti Spirit - sono rent • <span class="muted">Mentions légales à ajouter si site public</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const BRAND_NAME = "Tahiti Spirit - sono rent";
+  const CONTACT_EMAIL = "tahitispiritsonorent@gmail.com";
+  const ZONE_TEXT = "Nantes & alentours";
+
+  document.title = `${BRAND_NAME} | Nantes`;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const contactBlock = document.getElementById("contactBlock");
+  contactBlock.innerHTML = `📍 Zone : <b>${ZONE_TEXT}</b><br/>✉️ Email : <b>${CONTACT_EMAIL}</b>`;
+  const mailtoBtn = document.getElementById("mailtoBtn");
+  mailtoBtn.setAttribute("href", "mailto:" + CONTACT_EMAIL);
+
+  // Filtre tarifs
+  const search = document.getElementById("search");
+  const category = document.getElementById("category");
+  const rows = Array.from(document.querySelectorAll("#tarifsBody tr"));
+
+  function applyFilter(){
+    const q = (search.value || "").toLowerCase().trim();
+    const cat = category.value;
+
+    rows.forEach(tr => {
+      const text = tr.innerText.toLowerCase();
+      const rowCat = tr.getAttribute("data-cat");
+      const matchQ = !q || text.includes(q);
+      const matchCat = (cat === "all") || (rowCat === cat);
+      tr.style.display = (matchQ && matchCat) ? "" : "none";
+    });
+  }
+  search.addEventListener("input", applyFilter);
+  category.addEventListener("change", applyFilter);
+
+  // Devis email prérempli
+  const form = document.getElementById("quoteForm");
+
+  window.prefillDevis = function(packText){
+    document.querySelector('textarea[name="details"]').value =
+      `Je souhaite : ${packText}\n` +
+      `Nombre de personnes : \nIntérieur/extérieur : \nHeure début/fin : \nAutres besoins (lumière, in-ear, X32, technicien…) : `;
+    location.hash = "#devis";
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get("name");
+    const phone = data.get("phone");
+    const date = data.get("date");
+    const loc = data.get("location");
+    const need = data.get("need");
+    const service = data.get("service");
+    const details = data.get("details");
+
+    const subject = encodeURIComponent(`Demande de devis – Location sono – ${date} – ${loc}`);
+    const body = encodeURIComponent(
+`Bonjour,
+
+Je souhaite un devis pour une location de matériel.
+
+Client : ${name}
+Téléphone : ${phone || "Non précisé"}
+Date : ${date}
+Lieu : ${loc}
+Besoin : ${need}
+Service : ${service || "Non précisé"}
+
+Détails :
+${details}
+
+Merci,
+${name}`
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>

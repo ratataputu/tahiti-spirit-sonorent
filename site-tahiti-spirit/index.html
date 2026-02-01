@@ -12,16 +12,23 @@
   <link rel="icon" href="favicon.ico">
 
   <style>
-    /* Amélioration lisibilité pour le select “Toutes catégories” */
-select,
-select option {
-  color: #0b0c10 !important;        /* Texte sombre */
-  background: #f8f8f8 !important;   /* Fond clair neutre */
+    /* Style foncé haute lisibilité pour le select “Toutes catégories” */
+select {
+  color: #f4f6fb !important;              /* Texte clair */
+  background: rgba(18,20,27,0.88) !important; /* Fond foncé, légèrement transparent */
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
+/* Style des options dans la liste */
+select option {
+  color: #f4f6fb !important;              /* Texte clair */
+  background: #0b0c10 !important;         /* Noir profond comme ton site */
+}
+
+/* Option sélectionnée */
 select option:checked {
-  color: #091018 !important;        /* Option sélectionnée visible */
-  background: #e0e0e0 !important;
+  background: #1a1d26 !important;         /* Gris très foncé */
+  color: #ffffff !important;
 }
 
     :root{
@@ -742,6 +749,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

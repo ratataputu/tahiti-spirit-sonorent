@@ -12,6 +12,18 @@
   <link rel="icon" href="favicon.ico">
 
   <style>
+    /* Amélioration lisibilité pour le select “Toutes catégories” */
+select,
+select option {
+  color: #0b0c10 !important;        /* Texte sombre */
+  background: #f8f8f8 !important;   /* Fond clair neutre */
+}
+
+select option:checked {
+  color: #091018 !important;        /* Option sélectionnée visible */
+  background: #e0e0e0 !important;
+}
+
     :root{
       --bg:#0b0c10;
       --muted:#a7b0c0;
@@ -730,6 +742,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

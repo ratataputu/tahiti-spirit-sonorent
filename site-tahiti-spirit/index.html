@@ -237,6 +237,77 @@ select option:checked {
       .input,.select{min-width: 0; width:100%}
       .controls{width:100%; justify-content:stretch}
     }
+    /* === Packs style C : image en fond + overlay (premium) === */
+.pack.has-bg{
+  padding:0;                /* on gère le padding à l'intérieur */
+  overflow:hidden;
+}
+
+.pack .pack-bg{
+  position:relative;
+  min-height: 240px;        /* hauteur de carte (ajuste si tu veux) */
+  padding:16px;             /* padding interne pour le texte */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end; /* texte en bas, style premium */
+  gap:10px;
+
+  /* Image en fond */
+  background-size: cover;
+  background-position: center;  /* éviter les coupes bizarres */
+  background-repeat: no-repeat;
+}
+
+/* Overlay pour lisibilité (néon + sombre) */
+.pack .pack-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,12,16,0.20) 0%, rgba(11,12,16,0.85) 70%, rgba(11,12,16,0.95) 100%),
+    radial-gradient(900px 300px at 20% 0%, rgba(167,139,250,0.22), transparent 60%),
+    radial-gradient(900px 300px at 80% 10%, rgba(110,231,255,0.18), transparent 60%);
+  pointer-events:none;
+}
+
+.pack .pack-content{
+  position:relative;  /* au-dessus de l'overlay */
+}
+
+/* Tag au-dessus de l'image */
+.pack.has-bg .tag{
+  z-index:2;
+}
+
+/* Texte sur image : un peu plus contrasté */
+.pack.has-bg h3,
+.pack.has-bg .price,
+.pack.has-bg ul,
+.pack.has-bg li{
+  color: #f4f6fb;
+}
+.pack.has-bg ul{ color: rgba(244,246,251,0.85); }
+
+/* Actions alignées en bas, jolies sur image */
+.pack.has-bg .actions{
+  margin-top: 10px;
+}
+
+/* Boutons : légèrement plus visibles sur fond */
+.pack.has-bg .btn{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
+}
+.pack.has-bg .btn:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.24);
+}
+
+/* Mobile : hauteur plus petite */
+@media (max-width: 960px){
+  .pack .pack-bg{ min-height: 220px; }
+}
+
   </style>
 </head>
 
@@ -751,6 +822,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

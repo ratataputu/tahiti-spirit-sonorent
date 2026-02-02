@@ -460,6 +460,73 @@
       background: rgba(255,255,255,0.24) !important;
       border-color: rgba(255,255,255,0.38) !important;
    }
+    /* =========================================================
+   BOOQABLE — Agrandir le panneau "My Order"
+   ========================================================= */
+    [class*="booqable"] .DrawerWrapper,
+    [class*="booqable"] .Drawer,
+    [class*="booqable"] .Drawer-dfVgHx {
+      width: 420px !important;            /* largeur panneau */
+      max-width: 90vw !important;
+   }
+
+/* Le header bleu ("MY ORDER") */
+    [class*="booqable"] .HeaderWrapper,
+    [class*="booqable"] .Header-dklsJD {
+      padding: 18px 22px !important;
+      font-size: 18px !important;
+   }
+
+/* L'intérieur du panneau */
+    [class*="booqable"] .ContentWrapper,
+    [class*="booqable"] .Content {
+      padding: 18px !important;
+   }
+
+/* =========================================================
+   Barre de dates : stop débordement
+   ========================================================= */
+
+/* Conteneur (celui que tu m’as envoyé) */
+    [class*="booqable"] .Details-gQsgYX.egYZUG {
+      width: 100% !important;
+      max-width: 100% !important;
+
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+
+      padding: 14px 16px !important;
+      border-radius: 20px !important;
+
+      background: rgba(255,255,255,0.20) !important;
+      border: 1px solid rgba(255,255,255,0.35) !important;
+      gap: 14px !important;
+
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+   }
+
+/* Éviter le texte coupé */
+    [class*="booqable"] .Detail-dswlhU {
+      flex: 1 1 auto !important;
+      min-width: 0 !important; /* super important */
+   }
+
+/* Texte de date */
+    [class*="booqable"] .DateTime-hfyfGQ {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+   }
+
+/* Icône flèche */
+    [class*="booqable"] .Icon-cMkYmG {
+      flex: 0 0 auto !important;
+      font-size: 18px !important;
+   }
   </style>
 </head>
 
@@ -974,6 +1041,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

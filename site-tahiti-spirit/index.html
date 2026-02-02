@@ -409,6 +409,57 @@
       font-size: 12px !important;
       text-transform: uppercase;
    }
+    /* =========================================================
+   BOOQABLE — Barre période sous "MY ORDER"
+   (tes classes exactes : Details / DateTime / Icon)
+   ========================================================= */
+
+    [class*="booqable"] .Details-gQsgYX.egYZUG{
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+
+      padding: 12px 14px !important;
+      border-radius: 18px !important;                     /* gros arrondi */
+      background: rgba(255,255,255,0.18) !important;      /* contraste */
+      border: 1px solid rgba(255,255,255,0.28) !important;
+      backdrop-filter: blur(10px) !important;
+
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25) !important;
+   }
+
+/* Dates : plus grosses + bien blanches */
+[class*="booqable"] .Details-gQsgYX.egYZUG .DateTime-hfyfGQ{
+      margin: 0 !important;
+      color: #ffffff !important;
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.2px !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.35) !important;
+      white-space: nowrap !important;
+   }
+
+/* Les blocs date (un peu “pill”) */
+    [class*="booqable"] .Details-gQsgYX.egYZUG .Detail-dswlhU{
+      padding: 8px 10px !important;
+      border-radius: 14px !important;
+      background: rgba(0,0,0,0.18) !important;
+      border: 1px solid rgba(255,255,255,0.18) !important;
+   }
+
+/* Icône flèche : plus visible */
+    [class*="booqable"] .Details-gQsgYX.egYZUG .Icon-cMkYmG{
+      color: #ffffff !important;
+      opacity: 0.95 !important;
+      font-size: 18px !important;
+   }
+
+/* Petit effet hover (si la zone est cliquable) */
+    [class*="booqable"] .Details-gQsgYX.egYZUG:hover{
+      background: rgba(255,255,255,0.24) !important;
+      border-color: rgba(255,255,255,0.38) !important;
+   }
   </style>
 </head>
 
@@ -923,6 +974,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

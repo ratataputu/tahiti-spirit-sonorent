@@ -317,230 +317,98 @@
     [class*="booqable"] option{
       color: #111 !important;
    }
-    /* === Amélioration du calendrier Booqable === */
-
-    .booqable .calendar-day {
-      font-size: 18px !important;
-      width: 42px !important;
-      height: 42px !important;
-      line-height: 42px !important;
-      border-radius: 10px !important;
-      font-weight: 600 !important;
-   }
-
-    .booqable .calendar-day.available {
-      background: #4caf50 !important; /* vert lisible */
-      color: white !important;
-      border: 2px solid #3e8a40 !important;
-   }
-
-    .booqable .calendar-day.unavailable {
-      background: #d9534f !important; /* rouge visible */
-      color: white !important;
-      opacity: 0.8 !important;
-   }
-
-    .booqable .calendar-day.selected {
-      background: #6ee7ff !important; /* ton bleu néon */
-      color: #091018 !important;
-      border: 3px solid #a78bfa !important; /* touche violette néon */
-      box-shadow: 0 0 10px rgba(110,231,255,0.7);
-   }
-
-    .booqable .calendar-header {
-      font-size: 20px !important;
-      font-weight: 700 !important;
-      color: #f4f6fb !important;
-   }
-
-    .booqable .calendar table {
-      margin-top: 10px !important;
-   }
-
-    .booqable .calendar-day:hover {
-      transform: scale(1.08);
-      transition: 0.15s ease;
-   }
     /* =========================================================
-   BOOQABLE — Calendrier PLUS VISIBLE (grossissement + ronds)
+   CALENDRIER BOOQABLE (DayPicker) — GROS BOUTONS RONDS
+   Version robuste (ne dépend pas de .booqable)
    ========================================================= */
 
-/* 1) On grossit la fenêtre / contenu du datepicker */
-    [class*="booqable"] [class*="DatePicker"],
-    [class*="booqable"] [class*="date-picker"],
-    [class*="booqable"] [class*="datepicker"],
-    [class*="booqable"] [class*="calendar"]{
+/* Grossit tout le calendrier */
+    .DayPicker {
       transform: scale(1.12);
-      transform-origin: center;
+      transform-origin: center top;
    }
 
-/* 2) On augmente l'espacement global des jours */
-    [class*="booqable"] button[class*="day"],
-    [class*="booqable"] button[class*="Day"],
-    [class*="booqable"] [class*="day"] button{
-      width: 52px !important;
-      height: 52px !important;
-      border-radius: 999px !important;   /* rond */
-      font-size: 18px !important;
-      font-weight: 700 !important;
+/* Aère les semaines */
+    .DayPicker-Week {
+      margin: 8px 0 !important;
+   }
+
+/* Case jour = gros rond */
+    .DayPicker-Day {
+      width: 56px !important;
+      height: 56px !important;
+      border-radius: 999px !important;
+      padding: 0 !important;
       margin: 6px !important;
+      overflow: hidden;
    }
 
-/* 3) Jours disponibles (look néon) */
-    [class*="booqable"] button[class*="day"]:not([disabled]),
-    [class*="booqable"] button[class*="Day"]:not([disabled]){
-      background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
+/* Centrage parfait du contenu */
+    .DayPicker-Day__wrapper,
+    .DayPicker-Day__inner {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+   }
+
+/* Chiffre */
+    .DayPicker-Day__date {
+      font-size: 18px !important;
+      font-weight: 900 !important;
       color: #0b0c10 !important;
+   }
+
+/* Jour disponible */
+    .DayPicker-Day[aria-disabled="false"] {
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
       box-shadow: 0 0 14px rgba(110,231,255,.55) !important;
       border: none !important;
    }
 
-/* 4) Jour sélectionné (super visible) */
-    [class*="booqable"] button[aria-selected="true"],
-    [class*="booqable"] button[class*="selected"],
-    [class*="booqable"] button[class*="Selected"]{
-      background: #ffffff !important;
-      color: #111827 !important;
-      border: 3px solid #6ee7ff !important;
-      box-shadow:
-        0 0 18px rgba(110,231,255,.95),
-        0 0 26px rgba(167,139,250,.65) !important;
-      transform: scale(1.12) !important;
+/* Hover */
+    .DayPicker-Day[aria-disabled="false"]:hover {
+      transform: scale(1.12);
+      transition: 0.15s ease;
+      box-shadow: 0 0 18px rgba(110,231,255,.9) !important;
    }
 
-/* 5) Jours indisponibles (gris/rouge, lisible) */
-    [class*="booqable"] button[disabled]{
-      background: rgba(255,255,255,.10) !important;
-      color: rgba(244,246,251,.45) !important;
+/* Jour sélectionné */
+    .DayPicker-Day--selected {
+      background: #ffffff !important;
+      border: 3px solid #6ee7ff !important;
+      box-shadow: 0 0 18px rgba(110,231,255,.95),
+                  0 0 26px rgba(167,139,250,.60) !important;
+   }
+
+/* Chiffre sélectionné */
+    .DayPicker-Day--selected .DayPicker-Day__date {
+      color: #111827 !important;
+   }
+
+/* Jours indisponibles */
+    .DayPicker-Day[aria-disabled="true"] {
+      background: rgba(255,255,255,.08) !important;
+      opacity: 0.35 !important;
       box-shadow: none !important;
       cursor: not-allowed !important;
    }
 
-/* 6) Mois / titres plus gros */
-    [class*="booqable"] [class*="month"],
-    [class*="booqable"] [class*="Month"],
-    [class*="booqable"] [class*="header"],
-    [class*="booqable"] [class*="Header"]{
+/* Titre mois */
+    .DayPicker-Caption {
       font-size: 20px !important;
-      font-weight: 800 !important;
+      font-weight: 900 !important;
+      color: #f4f6fb !important;
    }
-    /* =========================================================
-   BOOQABLE / DayPicker — Calendrier gros + rond + néon
-   ========================================================= */
 
-/* Agrandir le calendrier (utile sur mobile) */
-.booqable .DayPicker,
-.booqable-modal .DayPicker,
-[class*="booqable"] .DayPicker {
-  transform: scale(1.12);
-  transform-origin: center top;
-}
-
-/* Ligne des jours : plus d'air */
-.booqable .DayPicker-Week,
-.booqable-modal .DayPicker-Week,
-[class*="booqable"] .DayPicker-Week {
-  margin: 6px 0 !important;
-}
-
-/* Case du jour (le container) */
-.booqable .DayPicker-Day,
-.booqable-modal .DayPicker-Day,
-[class*="booqable"] .DayPicker-Day {
-  width: 56px !important;
-  height: 56px !important;
-  border-radius: 999px !important;
-  padding: 0 !important;
-  margin: 6px !important;
-  overflow: hidden;
-}
-
-/* Le chiffre au centre */
-.booqable .DayPicker-Day__date,
-.booqable-modal .DayPicker-Day__date,
-[class*="booqable"] .DayPicker-Day__date {
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  color: #0b0c10 !important;
-}
-
-/* Wrapper / inner : centrage parfait */
-.booqable .DayPicker-Day__wrapper,
-.booqable .DayPicker-Day__inner,
-.booqable-modal .DayPicker-Day__wrapper,
-.booqable-modal .DayPicker-Day__inner,
-[class*="booqable"] .DayPicker-Day__wrapper,
-[class*="booqable"] .DayPicker-Day__inner {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* Jours disponibles : bouton néon */
-.booqable .DayPicker-Day[aria-disabled="false"],
-.booqable-modal .DayPicker-Day[aria-disabled="false"],
-[class*="booqable"] .DayPicker-Day[aria-disabled="false"] {
-  background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
-  box-shadow: 0 0 14px rgba(110,231,255,.55) !important;
-  border: none !important;
-}
-
-/* Hover : effet “bouton” */
-.booqable .DayPicker-Day[aria-disabled="false"]:hover,
-.booqable-modal .DayPicker-Day[aria-disabled="false"]:hover,
-[class*="booqable"] .DayPicker-Day[aria-disabled="false"]:hover {
-  transform: scale(1.12);
-  transition: 0.15s ease;
-  box-shadow: 0 0 18px rgba(110,231,255,.9) !important;
-}
-
-/* Jour sélectionné : ultra visible */
-.booqable .DayPicker-Day--selected,
-.booqable-modal .DayPicker-Day--selected,
-[class*="booqable"] .DayPicker-Day--selected {
-  background: #ffffff !important;
-  box-shadow: 0 0 18px rgba(110,231,255,.95),
-              0 0 26px rgba(167,139,250,.60) !important;
-  border: 3px solid #6ee7ff !important;
-}
-
-/* Chiffre du jour sélectionné */
-.booqable .DayPicker-Day--selected .DayPicker-Day__date,
-.booqable-modal .DayPicker-Day--selected .DayPicker-Day__date,
-[class*="booqable"] .DayPicker-Day--selected .DayPicker-Day__date {
-  color: #111827 !important;
-}
-
-/* Jours indisponibles */
-.booqable .DayPicker-Day[aria-disabled="true"],
-.booqable-modal .DayPicker-Day[aria-disabled="true"],
-[class*="booqable"] .DayPicker-Day[aria-disabled="true"] {
-  background: rgba(255,255,255,.08) !important;
-  box-shadow: none !important;
-  opacity: 0.35 !important;
-  cursor: not-allowed !important;
-}
-
-/* Titre mois plus gros (ex: February 2026) */
-.booqable .DayPicker-Caption,
-.booqable-modal .DayPicker-Caption,
-[class*="booqable"] .DayPicker-Caption {
-  font-size: 20px !important;
-  font-weight: 900 !important;
-  color: #f4f6fb !important;
-}
-
-/* Légende jours (SU MO TU...) plus lisible */
-.booqable .DayPicker-Weekday,
-.booqable-modal .DayPicker-Weekday,
-[class*="booqable"] .DayPicker-Weekday {
-  color: rgba(244,246,251,.85) !important;
-  font-weight: 800 !important;
-  font-size: 12px !important;
-  text-transform: uppercase;
-}
+/* Jours de la semaine */
+    .DayPicker-Weekday {
+      color: rgba(244,246,251,.85) !important;
+      font-weight: 800 !important;
+      font-size: 12px !important;
+      text-transform: uppercase;
+   }
   </style>
 </head>
 
@@ -1055,6 +923,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

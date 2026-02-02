@@ -13,22 +13,19 @@
 
   <style>
     /* Style foncé haute lisibilité pour le select “Toutes catégories” */
-select {
-  color: #f4f6fb !important;              /* Texte clair */
-  background: rgba(18,20,27,0.88) !important; /* Fond foncé, légèrement transparent */
+/* ✅ Styles UNIQUEMENT pour TES selects (classe .select) */
+.select{
+  color: #f4f6fb;
+  background: rgba(18,20,27,0.88);
   border: 1px solid rgba(255,255,255,0.12);
 }
-
-/* Style des options dans la liste */
-select option {
-  color: #f4f6fb !important;              /* Texte clair */
-  background: #0b0c10 !important;         /* Noir profond comme ton site */
+.select option{
+  color: #f4f6fb;
+  background: #0b0c10;
 }
-
-/* Option sélectionnée */
-select option:checked {
-  background: #1a1d26 !important;         /* Gris très foncé */
-  color: #ffffff !important;
+.select option:checked{
+  background: #1a1d26;
+  color: #ffffff;
 }
 
     :root{
@@ -825,6 +822,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

@@ -317,6 +317,50 @@
     [class*="booqable"] option{
       color: #111 !important;
    }
+    /* === Amélioration du calendrier Booqable === */
+
+    .booqable .calendar-day {
+      font-size: 18px !important;
+      width: 42px !important;
+      height: 42px !important;
+      line-height: 42px !important;
+      border-radius: 10px !important;
+      font-weight: 600 !important;
+   }
+
+    .booqable .calendar-day.available {
+      background: #4caf50 !important; /* vert lisible */
+      color: white !important;
+      border: 2px solid #3e8a40 !important;
+   }
+
+    .booqable .calendar-day.unavailable {
+      background: #d9534f !important; /* rouge visible */
+      color: white !important;
+      opacity: 0.8 !important;
+   }
+
+    .booqable .calendar-day.selected {
+      background: #6ee7ff !important; /* ton bleu néon */
+      color: #091018 !important;
+      border: 3px solid #a78bfa !important; /* touche violette néon */
+      box-shadow: 0 0 10px rgba(110,231,255,0.7);
+   }
+
+    .booqable .calendar-header {
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      color: #f4f6fb !important;
+   }
+
+    .booqable .calendar table {
+      margin-top: 10px !important;
+   }
+
+    .booqable .calendar-day:hover {
+      transform: scale(1.08);
+      transition: 0.15s ease;
+   }
   </style>
 </head>
 
@@ -831,6 +875,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

@@ -361,6 +361,70 @@
       transform: scale(1.08);
       transition: 0.15s ease;
    }
+    /* =========================================================
+   BOOQABLE — Calendrier PLUS VISIBLE (grossissement + ronds)
+   ========================================================= */
+
+/* 1) On grossit la fenêtre / contenu du datepicker */
+    [class*="booqable"] [class*="DatePicker"],
+    [class*="booqable"] [class*="date-picker"],
+    [class*="booqable"] [class*="datepicker"],
+    [class*="booqable"] [class*="calendar"]{
+      transform: scale(1.12);
+      transform-origin: center;
+   }
+
+/* 2) On augmente l'espacement global des jours */
+    [class*="booqable"] button[class*="day"],
+    [class*="booqable"] button[class*="Day"],
+    [class*="booqable"] [class*="day"] button{
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 999px !important;   /* rond */
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      margin: 6px !important;
+   }
+
+/* 3) Jours disponibles (look néon) */
+    [class*="booqable"] button[class*="day"]:not([disabled]),
+    [class*="booqable"] button[class*="Day"]:not([disabled]){
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
+      color: #0b0c10 !important;
+      box-shadow: 0 0 14px rgba(110,231,255,.55) !important;
+      border: none !important;
+   }
+
+/* 4) Jour sélectionné (super visible) */
+    [class*="booqable"] button[aria-selected="true"],
+    [class*="booqable"] button[class*="selected"],
+    [class*="booqable"] button[class*="Selected"]{
+      background: #ffffff !important;
+      color: #111827 !important;
+      border: 3px solid #6ee7ff !important;
+      box-shadow:
+        0 0 18px rgba(110,231,255,.95),
+        0 0 26px rgba(167,139,250,.65) !important;
+      transform: scale(1.12) !important;
+   }
+
+/* 5) Jours indisponibles (gris/rouge, lisible) */
+    [class*="booqable"] button[disabled]{
+      background: rgba(255,255,255,.10) !important;
+      color: rgba(244,246,251,.45) !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+   }
+
+/* 6) Mois / titres plus gros */
+    [class*="booqable"] [class*="month"],
+    [class*="booqable"] [class*="Month"],
+    [class*="booqable"] [class*="header"],
+    [class*="booqable"] [class*="Header"]{
+      font-size: 20px !important;
+      font-weight: 800 !important;
+   }
+
   </style>
 </head>
 
@@ -875,6 +939,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

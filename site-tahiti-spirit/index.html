@@ -1089,40 +1089,54 @@ ${name}`
 <script>
 (function(){
   function enhanceOrderBar(){
-    // Le bloc période (sous "MY ORDER") ressemble à ton HTML :
-    // <div class="Details-xxxx"> ... <p class="DateTime-xxxx">...</p> ... </div>
+    // On cible directement les conteneurs "Details-..." (classes hashées)
+    const candidates = document.querySelectorAll(
+      'div[class^="Details-"], div[class*=" Details-"]'
+    );
 
-    document.querySelectorAll('[class*="booqable"] [class^="Details-"], [class*="booqable"] [class*="Details-"]')
-      .forEach(details => {
-        // On évite de retraiter 1000 fois
-        if(details.classList.contains('ts-orderbar')) return;
+    candidates.forEach(details => {
+      // Il faut 2 dates pour être sûr que c'est la barre période
+      const dates = details.querySelectorAll('p[class^="DateTime-"], p[class*=" DateTime-"]');
+      if(dates.length < 2) return;
 
-        // On vérifie qu'il y a bien 2 dates dedans (les <p class="DateTime-...">)
-        const dates = details.querySelectorAll('p[class^="DateTime-"], p[class*="DateTime-"]');
-        if(dates.length < 2) return;
+      // Déjà fait ? on sort
+      if(details.classList.contains('ts-orderbar')) return;
 
-        details.classList.add('ts-orderbar');
+      // Ajout de nos classes stables
+      details.classList.add('ts-orderbar');
+      dates.forEach(p => p.classList.add('ts-pill'));
 
-        // On stylise chaque date en "pill"
-        dates.forEach(p => p.classList.add('ts-pill'));
-
-        // On stylise la flèche
-        const arrow = details.querySelector('i, svg');
-        if(arrow) arrow.classList.add('ts-arrow');
-      });
+      // Flèche (font-awesome i ou svg)
+      const arrow = details.querySelector('i, svg');
+      if(arrow) arrow.classList.add('ts-arrow');
+    });
   }
 
-  // 1er passage
-  enhanceOrderBar();
+  // Relances multiples (Booqable met parfois du temps à injecter)
+  const run = () => enhanceOrderBar();
 
-  // Re-passage à chaque re-render (Clear dates, etc.)
-  const obs = new MutationObserver(enhanceOrderBar);
+  // 1) tout de suite
+  run();
+
+  // 2) après chargement complet
+  window.addEventListener("load", run);
+
+  // 3) plusieurs relances courtes (très efficace avec Booqable)
+  let n = 0;
+  const timer = setInterval(() => {
+    run();
+    n++;
+    if(n > 20) clearInterval(timer); // ~10s
+  }, 500);
+
+  // 4) re-render (Clear dates, etc.)
+  const obs = new MutationObserver(run);
   obs.observe(document.body, { childList:true, subtree:true });
-
 })();
 </script>
 </body>
 </html>
+
 
 
 

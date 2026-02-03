@@ -575,6 +575,40 @@
       font-size:18px !important;
       color:#fff !important;
    }
+    /* =========================================================
+   BOOQABLE / DayPicker — Mois + jours (plus foncés)
+   ========================================================= */
+
+/* Fond du calendrier (si blanc) */
+    .DayPicker,
+    .DayPicker-Month,
+    .DayPicker-Body {
+      background: #ffffff !important;
+   }
+
+/* Titre du mois (ex: February 2026) */
+    .DayPicker-Caption,
+    .DayPicker-Caption > div {
+      color: #111827 !important;      /* noir/gris foncé */
+      font-weight: 900 !important;
+   }
+
+/* Jours de la semaine (SU MO TU…) */
+    .DayPicker-Weekday,
+    .DayPicker-Weekday abbr {
+      color: #111827 !important;      /* noir/gris foncé */
+      opacity: 1 !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+   }
+
+/* (Optionnel) Les flèches gauche/droite du mois */
+    .DayPicker-NavButton,
+    .DayPicker-NavButton:hover {
+      color: #111827 !important;
+      opacity: 1 !important;
+   }
+
   </style>
 </head>
 
@@ -1136,6 +1170,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

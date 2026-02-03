@@ -12,22 +12,6 @@
   <link rel="icon" href="favicon.ico">
 
   <style>
-    /* Style foncé haute lisibilité pour le select “Toutes catégories” */
-/* ✅ Styles UNIQUEMENT pour TES selects (classe .select) */
-.select{
-  color: #f4f6fb;
-  background: rgba(18,20,27,0.88);
-  border: 1px solid rgba(255,255,255,0.12);
-}
-.select option{
-  color: #f4f6fb;
-  background: #0b0c10;
-}
-.select option:checked{
-  background: #1a1d26;
-  color: #ffffff;
-}
-
     :root{
       --bg:#181b24;
       --muted:#a7b0c0;
@@ -40,20 +24,22 @@
       --shadow: 0 18px 60px rgba(0,0,0,.35);
       --radius: 18px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-  radial-gradient(1600px 800px at 30% -15%, rgba(167,139,250,0.32), transparent 70%),
-  radial-gradient(1500px 750px at 70% -5%, rgba(110,231,255,0.30), transparent 70%),
-  radial-gradient(900px 400px at 50% 120%, rgba(255,90,170,0.08), transparent 75%),
-  var(--bg);
+        radial-gradient(1600px 800px at 30% -15%, rgba(167,139,250,0.32), transparent 70%),
+        radial-gradient(1500px 750px at 70% -5%, rgba(110,231,255,0.30), transparent 70%),
+        radial-gradient(900px 400px at 50% 120%, rgba(255,90,170,0.08), transparent 75%),
+        var(--bg);
       color:var(--text);
       line-height:1.55;
     }
     a{color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:24px}
+
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -65,11 +51,6 @@
       gap:16px; padding:14px 24px; max-width:1100px; margin:0 auto;
     }
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
-    .logo{
-      width:38px;height:38px;border-radius:12px;
-      background: linear-gradient(135deg, rgba(110,231,255,.9), rgba(167,139,250,.9));
-      box-shadow: 0 10px 30px rgba(110,231,255,.15);
-    }
     .brand strong{font-size:15px;letter-spacing:.2px}
     .brand span{display:block;color:var(--muted);font-size:12px;margin-top:1px}
     .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
@@ -79,6 +60,7 @@
       border:1px solid transparent;
     }
     .navlinks a:hover{border-color:var(--line);color:var(--text)}
+
     .hero{
       padding:48px 0 22px;
       display:grid; gap:20px;
@@ -92,6 +74,7 @@
     }
     .hero p{margin:0;color:var(--muted);font-size:16px;max-width:60ch}
     .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
@@ -112,12 +95,14 @@
       background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.9));
       color:#091018;
     }
+
     .card{
       background: rgba(18,20,27,.78);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
+
     .heroCard{padding:18px}
     .heroCard h3{margin:0 0 8px;font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.3px;text-transform:uppercase}
     .heroCard ul{margin:0; padding:0; list-style:none; display:grid; gap:10px}
@@ -154,7 +139,7 @@
     .pack .price span{font-size:13px;color:var(--muted);font-weight:600;margin-left:6px}
     .pack ul{margin:0;padding-left:18px;color:var(--muted)}
     .pack li{margin:4px 0}
-    .pack .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pack .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
 
     .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
     .input, .select{
@@ -167,6 +152,7 @@
       min-width: 220px;
     }
     .select{min-width: 190px}
+
     table{
       width:100%;
       border-collapse: collapse;
@@ -199,7 +185,6 @@
     }
     .kpi b{display:block;font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.35px}
     .kpi span{display:block;margin-top:6px;font-size:18px;font-weight:800}
-    .kpi small{display:block;margin-top:4px;color:var(--muted)}
 
     .twoCols{display:grid; gap:14px; grid-template-columns: 1fr 1fr; align-items:start;}
     .box{padding:16px}
@@ -234,81 +219,27 @@
       .input,.select{min-width: 0; width:100%}
       .controls{width:100%; justify-content:stretch}
     }
-    /* === Packs style C : image en fond + overlay (premium) === */
-    .pack.has-bg{
-      padding:0;                /* on gère le padding à l'intérieur */
-      overflow:hidden;
-    }
 
-    .pack .pack-bg{
-      position:relative;
-      min-height: 240px;        /* hauteur de carte (ajuste si tu veux) */
-      padding:16px;             /* padding interne pour le texte */
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end; /* texte en bas, style premium */
-      gap:10px;
-
-  /* Image en fond */
-      background-size: cover;
-      background-position: top;  /* éviter les coupes bizarres */
-      background-repeat: no-repeat;
-    }  
-
-/* Overlay pour lisibilité (néon + sombre) */
-    .pack .pack-bg::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(11,12,16,0.20) 0%, rgba(11,12,16,0.85) 70%, rgba(11,12,16,0.95) 100%),
-        radial-gradient(900px 300px at 20% 0%, rgba(167,139,250,0.22), transparent 60%),
-        radial-gradient(900px 300px at 80% 10%, rgba(110,231,255,0.18), transparent 60%);
-      pointer-events:none;
-    }
-
-    .pack .pack-content{
-      position:relative;  /* au-dessus de l'overlay */
-    }
-
-    /* Tag au-dessus de l'image */
-    .pack.has-bg .tag{
-      z-index:2;
-    }
-
-/* Texte sur image : un peu plus contrasté */
-    .pack.has-bg h3,
-    .pack.has-bg .price,
-    .pack.has-bg ul,
-    .pack.has-bg li{
+    /* =========================================================
+       TES SELECTS UNIQUEMENT (classe .select)
+       ========================================================= */
+    .select{
       color: #f4f6fb;
+      background: rgba(18,20,27,0.88);
+      border: 1px solid rgba(255,255,255,0.12);
     }
-    .pack.has-bg ul{ color: rgba(244,246,251,0.85); }
-
-/* Actions alignées en bas, jolies sur image */
-    .pack.has-bg .actions{
-      margin-top: 10px;
+    .select option{
+      color: #f4f6fb;
+      background: #0b0c10;
     }
-
-/* Boutons : légèrement plus visibles sur fond */
-    .pack.has-bg .btn{
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.18);
-    }
-    .pack.has-bg .btn:hover{
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(255,255,255,0.24);
+    .select option:checked{
+      background: #1a1d26;
+      color: #ffffff;
     }
 
-/* Mobile : hauteur plus petite */
-    @media (max-width: 960px){
-      .pack .pack-bg{ min-height: 220px; }
-    }
-    .booqable-widget select,
-    .booqable-widget option {
-        color: #000 !important;
-    }
-    /* ✅ Booqable : menus déroulants lisibles */
+    /* =========================================================
+       BOOQABLE — selects lisibles (éviter texte gris illisible)
+       ========================================================= */
     .booqable select,
     .booqable option,
     .booqable-modal select,
@@ -316,199 +247,102 @@
     [class*="booqable"] select,
     [class*="booqable"] option{
       color: #111 !important;
-   }
+    }
+
     /* =========================================================
-   CALENDRIER BOOQABLE (DayPicker) — GROS BOUTONS RONDS
-   Version robuste (ne dépend pas de .booqable)
-   ========================================================= */
+       BOOQABLE / DayPicker — boutons ronds + style + header foncé
+       (objectif: lisible même si fond blanc)
+       ========================================================= */
+    .DayPicker,
+    .DayPicker-Month,
+    .DayPicker-Body{
+      background: #ffffff !important;
+    }
 
-/* Grossit tout le calendrier */
-    .DayPicker {
-      transform: scale(1.00);
-      transform-origin: center top;
-   }
+    /* Mois */
+    .DayPicker-Caption,
+    .DayPicker-Caption > div{
+      color: #111827 !important;
+      font-weight: 900 !important;
+      font-size: 20px !important;
+    }
 
-/* Aère les semaines */
-    .DayPicker-Week {
-      margin: 8px 0 !important;
-   }
+    /* Jours semaine */
+    .DayPicker-Weekday,
+    .DayPicker-Weekday abbr{
+      color: #111827 !important;
+      opacity: 1 !important;
+      font-weight: 800 !important;
+      font-size: 12px !important;
+      text-transform: uppercase;
+    }
 
-/* Case jour = gros rond */
-    .DayPicker-Day {
+    /* Flèches navigation mois */
+    .DayPicker-NavButton,
+    .DayPicker-NavButton:hover{
+      color: #111827 !important;
+      opacity: 1 !important;
+    }
+
+    /* Case jour = gros rond */
+    .DayPicker-Week{ margin: 8px 0 !important; }
+    .DayPicker-Day{
       width: 40px !important;
       height: 40px !important;
       border-radius: 999px !important;
       padding: 0 !important;
       margin: 6px !important;
       overflow: hidden;
-   }
-
-/* Centrage parfait du contenu */
+    }
     .DayPicker-Day__wrapper,
-    .DayPicker-Day__inner {
-      width: 100% !important;
-      height: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-   }
+    .DayPicker-Day__inner{
+      width:100% !important; height:100% !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+    }
 
-/* Chiffre */
-    .DayPicker-Day__date {
+    /* Chiffre */
+    .DayPicker-Day__date{
       font-size: 18px !important;
       font-weight: 900 !important;
       color: #0b0c10 !important;
-   }
+    }
 
-/* Jour disponible */
-    .DayPicker-Day[aria-disabled="false"] {
+    /* Jour dispo */
+    .DayPicker-Day[aria-disabled="false"]{
       background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
       box-shadow: 0 0 14px rgba(110,231,255,.55) !important;
       border: none !important;
-   }
-
-/* Hover */
-    .DayPicker-Day[aria-disabled="false"]:hover {
+    }
+    .DayPicker-Day[aria-disabled="false"]:hover{
       transform: scale(1.12);
       transition: 0.15s ease;
       box-shadow: 0 0 18px rgba(110,231,255,.9) !important;
-   }
+    }
 
-/* Jour sélectionné */
-    .DayPicker-Day--selected {
+    /* Jour sélectionné */
+    .DayPicker-Day--selected{
       background: #ffffff !important;
       border: 3px solid #6ee7ff !important;
-      box-shadow: 0 0 18px rgba(110,231,255,.95),
-                  0 0 26px rgba(167,139,250,.60) !important;
-   }
-
-/* Chiffre sélectionné */
-    .DayPicker-Day--selected .DayPicker-Day__date {
+      box-shadow: 0 0 18px rgba(110,231,255,.95), 0 0 26px rgba(167,139,250,.60) !important;
+    }
+    .DayPicker-Day--selected .DayPicker-Day__date{
       color: #111827 !important;
-   }
+    }
 
-/* Jours indisponibles */
-    .DayPicker-Day[aria-disabled="true"] {
-      background: rgba(255,255,255,.08) !important;
+    /* Jours indispos */
+    .DayPicker-Day[aria-disabled="true"]{
+      background: rgba(0,0,0,.05) !important;
       opacity: 0.35 !important;
       box-shadow: none !important;
       cursor: not-allowed !important;
-   }
+    }
 
-/* Titre mois */
-    .DayPicker-Caption {
-      font-size: 20px !important;
-      font-weight: 900 !important;
-      color: #f4f6fb !important;
-   }
-
-/* Jours de la semaine */
-    .DayPicker-Weekday {
-      color: rgba(244,246,251,.85) !important;
-      font-weight: 800 !important;
-      font-size: 12px !important;
-      text-transform: uppercase;
-   }
     /* =========================================================
-   BOOQABLE — Barre période sous "MY ORDER"
-   (tes classes exactes : Details / DateTime / Icon)
-   ========================================================= */
-
-    [class*="booqable"] .Details-gQsgYX.egYZUG{
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 10px !important;
-
-      padding: 12px 14px !important;
-      border-radius: 18px !important;                     /* gros arrondi */
-      background: rgba(255,255,255,0.18) !important;      /* contraste */
-      border: 1px solid rgba(255,255,255,0.28) !important;
-      backdrop-filter: blur(10px) !important;
-
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25) !important;
-   }
-
-/* Dates : plus grosses + bien blanches */
-[class*="booqable"] .Details-gQsgYX.egYZUG .DateTime-hfyfGQ{
-      margin: 0 !important;
-      color: #ffffff !important;
-      font-size: 15px !important;
-      font-weight: 900 !important;
-      letter-spacing: 0.2px !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,0.35) !important;
-      white-space: nowrap !important;
-   }
-
-/* Les blocs date (un peu “pill”) */
-    [class*="booqable"] .Details-gQsgYX.egYZUG .Detail-dswlhU{
-      padding: 8px 10px !important;
-      border-radius: 14px !important;
-      background: rgba(0,0,0,0.18) !important;
-      border: 1px solid rgba(255,255,255,0.18) !important;
-   }
-
-/* Icône flèche : plus visible */
-    [class*="booqable"] .Details-gQsgYX.egYZUG .Icon-cMkYmG{
-      color: #ffffff !important;
-      opacity: 0.95 !important;
-      font-size: 18px !important;
-   }
-
-/* Petit effet hover (si la zone est cliquable) */
-    [class*="booqable"] .Details-gQsgYX.egYZUG:hover{
-      background: rgba(255,255,255,0.24) !important;
-      border-color: rgba(255,255,255,0.38) !important;
-   }
-/* =========================================================
-   Barre de dates : stop débordement
-   ========================================================= */
-
-/* Conteneur (celui que tu m’as envoyé) */
-    [class*="booqable"] .Details-gQsgYX.egYZUG {
-      width: 100% !important;
-      max-width: 100% !important;
-
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-
-      padding: 14px 16px !important;
-      border-radius: 20px !important;
-
-      background: rgba(255,255,255,0.20) !important;
-      border: 1px solid rgba(255,255,255,0.35) !important;
-      gap: 14px !important;
-
-      overflow: hidden !important;
-      box-sizing: border-box !important;
-   }
-
-/* Éviter le texte coupé */
-    [class*="booqable"] .Detail-dswlhU {
-      flex: 1 1 auto !important;
-      min-width: 0 !important; /* super important */
-   }
-
-/* Texte de date */
-    [class*="booqable"] .DateTime-hfyfGQ {
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      font-size: 15px !important;
-      font-weight: 700 !important;
-   }
-
-/* Icône flèche */
-    [class*="booqable"] .Icon-cMkYmG {
-      flex: 0 0 auto !important;
-      font-size: 18px !important;
-   }
-    /* =========================================================
-   BOOQABLE — BARRE PÉRIODE (sous "MY ORDER") toujours grande
-   ========================================================= */
-
-/* On cible les classes "hashées" de Booqable avec des sélecteurs génériques */
+       BOOQABLE — BARRE PÉRIODE (sous "MY ORDER") via classes stables
+       (JS ajoute .ts-orderbar / .ts-pill / .ts-arrow)
+       ========================================================= */
     .ts-orderbar{
       display:flex !important;
       align-items:center !important;
@@ -522,13 +356,13 @@
       background: rgba(255,255,255,0.14) !important;
       border: 1px solid rgba(255,255,255,0.22) !important;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
-   }
 
-/* Les deux "pills" de date (gauche / droite) */
+      overflow:hidden !important;
+    }
+
     .ts-orderbar .ts-pill{
       flex: 1 1 0 !important;
       min-width: 140px !important;
-
       padding:10px 12px !important;
       border-radius:999px !important;
 
@@ -536,55 +370,70 @@
       border: 1px solid rgba(255,255,255,0.18) !important;
 
       color:#fff !important;
-      font-weight:800 !important;
+      font-weight:900 !important;
       font-size:14px !important;
       text-align:center !important;
 
       white-space:nowrap !important;
       overflow:hidden !important;
       text-overflow:ellipsis !important;
-   }
+      margin:0 !important;
+    }
 
-/* La flèche au milieu */
     .ts-orderbar .ts-arrow{
       flex:0 0 auto !important;
       opacity:0.95 !important;
       font-size:18px !important;
       color:#fff !important;
-   }
+    }
+
     /* =========================================================
-   BOOQABLE / DayPicker — Mois + jours (plus foncés)
-   ========================================================= */
+       BOOQABLE — PANIER FULL SCREEN (MY ORDER)
+       Objectif: 100% écran sur desktop ET mobile
+       ========================================================= */
 
-/* Fond du calendrier (si blanc) */
-    .DayPicker,
-    .DayPicker-Month,
-    .DayPicker-Body {
-      background: #ffffff !important;
-   }
+    /* Quand le panier est ouvert, on bloque le scroll de la page (JS ajoute .ts-cart-open au body) */
+    body.ts-cart-open{
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
 
-/* Titre du mois (ex: February 2026) */
-    .DayPicker-Caption,
-    .DayPicker-Caption > div {
-      color: #111827 !important;      /* noir/gris foncé */
-      font-weight: 900 !important;
-   }
+    /* Fullscreen: on vise les "drawers" par motifs de classes (robuste) */
+    [class*="booqable"] [class*="Drawer"],
+    [class*="booqable"] [class*="DrawerWrapper"],
+    [class*="booqable"] [class^="Drawer-"],
+    [class*="booqable"] [class^="DrawerWrapper-"]{
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+    }
 
-/* Jours de la semaine (SU MO TU…) */
-    .DayPicker-Weekday,
-    .DayPicker-Weekday abbr {
-      color: #111827 !important;      /* noir/gris foncé */
-      opacity: 1 !important;
-      font-weight: 800 !important;
-      text-transform: uppercase;
-   }
+    /* L’intérieur doit pouvoir scroller */
+    [class*="booqable"] [class*="Content"],
+    [class*="booqable"] [class*="ContentWrapper"]{
+      height: calc(100vh - 72px) !important; /* laisse la place au header du drawer */
+      max-height: calc(100vh - 72px) !important;
+      overflow-y: auto !important;
+      padding: 18px !important;
+      -webkit-overflow-scrolling: touch;
+    }
 
-/* (Optionnel) Les flèches gauche/droite du mois */
-    .DayPicker-NavButton,
-    .DayPicker-NavButton:hover {
-      color: #111827 !important;
-      opacity: 1 !important;
-   }
+    /* Header du panier (MY ORDER) un peu plus confortable */
+    [class*="booqable"] [class*="Header"],
+    [class*="booqable"] [class*="HeaderWrapper"]{
+      padding: 18px 18px !important;
+      font-size: 18px !important;
+    }
+
+    /* Sur très petit écran: padding plus compact */
+    @media (max-width: 500px){
+      [class*="booqable"] [class*="Content"],
+      [class*="booqable"] [class*="ContentWrapper"]{
+        padding: 14px !important;
+      }
+    }
   </style>
 </head>
 
@@ -602,7 +451,6 @@
     <nav class="navlinks">
       <a href="#packs">Packs</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#caution">Caution</a>
       <a href="#options">Options</a>
       <a href="#devis">Devis</a>
     </nav>
@@ -626,22 +474,10 @@
       </div>
 
       <div class="kpiRow">
-        <div class="kpi">
-          <b>Sono</b>
-          <span>Jusqu’à 4 subs 18"</span>
-        </div>
-        <div class="kpi">
-          <b>Lumière</b>
-          <span>Lyres + PAR LED</span>
-        </div>
-        <div class="kpi">
-          <b>Consoles</b>
-          <span>Behringer X32</span>
-        </div>
-        <div class="kpi">
-          <b>In-ear</b>
-          <span>Xvive U4</span>
-        </div>
+        <div class="kpi"><b>Sono</b><span>Jusqu’à 4 subs 18"</span></div>
+        <div class="kpi"><b>Lumière</b><span>Lyres + PAR LED</span></div>
+        <div class="kpi"><b>Consoles</b><span>Behringer X32</span></div>
+        <div class="kpi"><b>In-ear</b><span>Xvive U4</span></div>
       </div>
     </div>
 
@@ -650,24 +486,15 @@
       <ul>
         <li class="pill">
           <span class="dot info"></span>
-          <div>
-            <b>Matériel pro & entretenu</b>
-            <small>Testé et vérifié avant chaque location</small>
-          </div>
+          <div><b>Matériel pro & entretenu</b><small>Testé et vérifié avant chaque location</small></div>
         </li>
         <li class="pill">
           <span class="dot"></span>
-          <div>
-            <b>Packs “tout compris”</b>
-            <small>Sono + micros + (option) lumière / X32 / in-ear</small>
-          </div>
+          <div><b>Packs “tout compris”</b><small>Sono + micros + (option) lumière / X32 / in-ear</small></div>
         </li>
         <li class="pill">
           <span class="dot warn"></span>
-          <div>
-            <b>Caution + contrat</b>
-            <small>Simple et sécurisé</small>
-          </div>
+          <div><b>Caution + contrat</b><small>Simple et sécurisé</small></div>
         </li>
       </ul>
     </aside>
@@ -686,95 +513,43 @@
 
     <div class="grid">
 
-      <!-- PACK 80–120 -->
       <article class="card pack">
         <div class="tag">Populaire</div>
         <h3>Pack “Soirée 80–120 pers.”</h3>
         <div class="price">90 € <span>/ jour</span></div>
         <div class="actions">
-          
-          </button>
           <div class="booqable-product" data-id="1-pack-soiree-80-120-pers"></div>
-          <button class="btn primary" onclick="prefillDevis('Pack Soirée 80–120 pers. (90€/jour)')">
-            Demander un devis
-          </button>
-          
+          <button class="btn primary" onclick="prefillDevis('Pack Soirée 80–120 pers. (90€/jour)')">Demander un devis</button>
         </div>
       </article>
 
-      <!-- PACK 150–200 -->
       <article class="card pack">
         <div class="tag">Bass +</div>
         <h3>Pack “Soirée 150–200 pers.”</h3>
         <div class="price">150 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="2-pack-soiree-150-200-pers"></div>
-          </button>
-
-          <button class="btn primary" onclick="prefillDevis('Pack Soirée 150–200 pers. (150€/jour)')">
-            Demander un devis
-          </button>
-         </div>
+          <button class="btn primary" onclick="prefillDevis('Pack Soirée 150–200 pers. (150€/jour)')">Demander un devis</button>
+        </div>
       </article>
 
-      <!-- PACK CONCERT / GROUPE -->
       <article class="card pack">
         <div class="tag">Groupe</div>
         <h3>Pack “Concert / Groupe”</h3>
         <div class="price">180 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="3-pack-concert-groupe-90913ec3-a4bb-477e-96d9-ba40e780be02"></div>
-          </button>
-
-          <button class="btn primary" onclick="prefillDevis('Pack Concert / Groupe (180€/jour)')">
-            Demander un devis
-          </button>
+          <button class="btn primary" onclick="prefillDevis('Pack Concert / Groupe (180€/jour)')">Demander un devis</button>
         </div>
       </article>
 
-      <!-- PACK CONCERT PRO -->
       <article class="card pack">
         <div class="tag">PRO</div>
         <h3>Pack “Concert PRO (X32 + In-ear)”</h3>
         <div class="price">250 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="4-pack-concert-pro-x32-in-ear"></div>
-          </button>
-
-          <button class="btn primary" onclick="prefillDevis('Pack Concert PRO (X32 + In-ear) – 250€/jour')">
-            Demander un devis
-          </button>
-        </div>
-      </article>
-      
-    </div>
-  </section>
-      <!-- PACK LUMIERE (sans booqable pour l'instant) -->
-      <article class="card pack">
-        <div class="tag">Lumière</div>
-        <h3>Pack “Lumière”</h3>
-        <div class="price">Dès 45 € <span>/ jour</span></div>
-        <ul>
-          <li>6 × PAR LED (pack)</li>
-          <li>ou 4 × lyres Spot (pack)</li>
-          <li>+ fumée en option</li>
-        </ul>
-        <div class="actions">
-          <button class="btn primary" onclick="prefillDevis('Pack Lumière (PAR/lyres) – dès 45€/jour')">Demander un devis</button>
-        </div>
-      </article>
-
-      <!-- PACK 6 SM58 (sans booqable pour l'instant) -->
-      <article class="card pack">
-        <div class="tag">In-ear</div>
-        <h3>Pack “6 micros SM58”</h3>
-        <div class="price">45 € <span>/ jour</span></div>
-        <ul>
-          <li>6 × Shure SM58</li>
-          <li>Pieds/câbles selon besoin</li>
-        </ul>
-        <div class="actions">
-          <button class="btn primary" onclick="prefillDevis('Pack 6 micros SM58 (45€/jour)')">Demander un devisr</button>
+          <button class="btn primary" onclick="prefillDevis('Pack Concert PRO (X32 + In-ear) – 250€/jour')">Demander un devis</button>
         </div>
       </article>
 
@@ -784,9 +559,7 @@
   <!-- TARIFS -->
   <section id="tarifs">
     <div class="sectionHead">
-      <div>
-        <h2>Tarifs à l’unité</h2>
-      </div>
+      <div><h2>Tarifs à l’unité</h2></div>
 
       <div class="controls">
         <input id="search" class="input" type="search" placeholder="Rechercher (ex: X32, lyre, U4…)" />
@@ -815,117 +588,21 @@
         </tr>
       </thead>
       <tbody id="tarifsBody">
-        <!-- Enceintes -->
-        <tr data-cat="enceintes">
-          <td><b>Alto TS415 (15")</b></td>
-          <td>Enceintes</td>
-          <td><b>45 €</b></td>
-          <td class="muted">Pack x2 : 80 €</td>
-        </tr>
-        <tr data-cat="enceintes">
-          <td><b>Alto TS412 (12")</b></td>
-          <td>Enceintes</td>
-          <td><b>40 €</b></td>
-          <td class="muted">Pack x2 : 70 €</td>
-        </tr>
-
-        <!-- Subs -->
-        <tr data-cat="subs">
-          <td><b>Alto TS18S (sub 18")</b></td>
-          <td>Subs</td>
-          <td><b>60 €</b></td>
-          <td class="muted">Pack x2 : 100 € • Pack x4 : 180 €</td>
-        </tr>
-
-        <!-- Consoles -->
-        <tr data-cat="consoles">
-          <td><b>Behringer X32</b></td>
-          <td>Consoles</td>
-          <td><b>70 €</b></td>
-          <td class="muted">Console 32 canaux (pro)</td>
-        </tr>
-        <tr data-cat="consoles">
-          <td><b>Behringer X32 Rack</b></td>
-          <td>Consoles</td>
-          <td><b>50 €</b></td>
-          <td class="muted">Idéal groupe / in-ear</td>
-        </tr>
-
-        <!-- In-ear -->
-        <tr data-cat="inear">
-          <td><b>Xvive U4 (émetteur + 1 récepteur)</b></td>
-          <td>In-ear</td>
-          <td><b>20 €</b></td>
-          <td class="muted">Retours in-ear sans fil</td>
-        </tr>
-        <tr data-cat="inear">
-          <td><b>Récepteur Xvive U4R (supplémentaire)</b></td>
-          <td>In-ear</td>
-          <td><b>10 €</b></td>
-          <td class="muted">Pour ajouter des musiciens</td>
-        </tr>
-
-        <!-- Micros -->
-        <tr data-cat="micros">
-          <td><b>Shure SM58</b></td>
-          <td>Micros</td>
-          <td><b>10 €</b></td>
-          <td class="muted">Pack 6 : 45 €</td>
-        </tr>
-        <tr data-cat="micros">
-          <td><b>Shure SM Two (pack)</b></td>
-          <td>Micros</td>
-          <td><b>12 €</b></td>
-          <td class="muted">Micro chant premium</td>
-        </tr>
-
-        <!-- Lumière / fumée -->
-        <tr data-cat="lumieres">
-          <td><b>Lyre Spot MaxiSpot 30</b></td>
-          <td>Lumière / Fumée</td>
-          <td><b>25 €</b></td>
-          <td class="muted">Pack x4 : 80 €</td>
-        </tr>
-        <tr data-cat="lumieres">
-          <td><b>PAR LED Party PAR 123</b></td>
-          <td>Lumière / Fumée</td>
-          <td><b>10 €</b></td>
-          <td class="muted">Pack x6 : 45 €</td>
-        </tr>
-        <tr data-cat="lumieres">
-          <td><b>Machine à fumée Chauvet Hurricane 1200</b></td>
-          <td>Lumière / Fumée</td>
-          <td><b>15 €</b></td>
-          <td class="muted">Liquide possible en option</td>
-        </tr>
-
-        <!-- Pieds / supports -->
-        <tr data-cat="stands">
-          <td><b>Pied d’enceinte</b></td>
-          <td>Pieds / supports</td>
-          <td><b>5 €</b></td>
-          <td class="muted">Selon pack / dispo</td>
-        </tr>
-        <tr data-cat="stands">
-          <td><b>Barre M20 (sub → enceinte)</b></td>
-          <td>Pieds / supports</td>
-          <td><b>5 €</b></td>
-          <td class="muted">Recommandé avec subs</td>
-        </tr>
-
-        <!-- Accessoires -->
-        <tr data-cat="accessoires">
-          <td><b>DI (1 canal)</b></td>
-          <td>Accessoires</td>
-          <td><b>4 €</b></td>
-          <td class="muted">Clavier / guitare / basse</td>
-        </tr>
-        <tr data-cat="accessoires">
-          <td><b>Pack câbles (selon besoin)</b></td>
-          <td>Accessoires</td>
-          <td><b>5–10 €</b></td>
-          <td class="muted">XLR / jack / DMX</td>
-        </tr>
+        <tr data-cat="enceintes"><td><b>Alto TS415 (15")</b></td><td>Enceintes</td><td><b>45 €</b></td><td class="muted">Pack x2 : 80 €</td></tr>
+        <tr data-cat="enceintes"><td><b>Alto TS412 (12")</b></td><td>Enceintes</td><td><b>40 €</b></td><td class="muted">Pack x2 : 70 €</td></tr>
+        <tr data-cat="subs"><td><b>Alto TS18S (sub 18")</b></td><td>Subs</td><td><b>60 €</b></td><td class="muted">Pack x2 : 100 € • Pack x4 : 180 €</td></tr>
+        <tr data-cat="consoles"><td><b>Behringer X32</b></td><td>Consoles</td><td><b>70 €</b></td><td class="muted">Console 32 canaux (pro)</td></tr>
+        <tr data-cat="consoles"><td><b>Behringer X32 Rack</b></td><td>Consoles</td><td><b>50 €</b></td><td class="muted">Idéal groupe / in-ear</td></tr>
+        <tr data-cat="inear"><td><b>Xvive U4 (émetteur + 1 récepteur)</b></td><td>In-ear</td><td><b>20 €</b></td><td class="muted">Retours in-ear sans fil</td></tr>
+        <tr data-cat="inear"><td><b>Récepteur Xvive U4R (supplémentaire)</b></td><td>In-ear</td><td><b>10 €</b></td><td class="muted">Pour ajouter des musiciens</td></tr>
+        <tr data-cat="micros"><td><b>Shure SM58</b></td><td>Micros</td><td><b>10 €</b></td><td class="muted">Pack 6 : 45 €</td></tr>
+        <tr data-cat="lumieres"><td><b>Lyre Spot MaxiSpot 30</b></td><td>Lumière / Fumée</td><td><b>25 €</b></td><td class="muted">Pack x4 : 80 €</td></tr>
+        <tr data-cat="lumieres"><td><b>PAR LED Party PAR 123</b></td><td>Lumière / Fumée</td><td><b>10 €</b></td><td class="muted">Pack x6 : 45 €</td></tr>
+        <tr data-cat="lumieres"><td><b>Machine à fumée Chauvet Hurricane 1200</b></td><td>Lumière / Fumée</td><td><b>15 €</b></td><td class="muted">Liquide possible en option</td></tr>
+        <tr data-cat="stands"><td><b>Pied d’enceinte</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Selon pack / dispo</td></tr>
+        <tr data-cat="stands"><td><b>Barre M20 (sub → enceinte)</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Recommandé avec subs</td></tr>
+        <tr data-cat="accessoires"><td><b>DI (1 canal)</b></td><td>Accessoires</td><td><b>4 €</b></td><td class="muted">Clavier / guitare / basse</td></tr>
+        <tr data-cat="accessoires"><td><b>Pack câbles (selon besoin)</b></td><td>Accessoires</td><td><b>5–10 €</b></td><td class="muted">XLR / jack / DMX</td></tr>
       </tbody>
     </table>
   </section>
@@ -933,9 +610,7 @@
   <!-- OPTIONS -->
   <section id="options">
     <div class="sectionHead">
-      <div>
-        <h2>Options</h2>
-      </div>
+      <div><h2>Options</h2></div>
     </div>
 
     <div class="twoCols">
@@ -953,9 +628,7 @@
   <!-- DEVIS -->
   <section id="devis">
     <div class="sectionHead">
-      <div>
-        <h2>Demande de devis</h2>
-      </div>
+      <div><h2>Demande de devis</h2></div>
     </div>
 
     <div class="twoCols">
@@ -1010,8 +683,7 @@
   <div class="container">
     <div class="fineprint">
       <div class="badge">✅ Nantes • ✅ Sono + Lumière + X32 • ✅ Devis rapide</div>
-      <div>© <span id="year"></span> Tahiti Spirit - sono rent • <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a>
-
+      <div>© <span id="year"></span> Tahiti Spirit - sono rent • <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></div>
     </div>
   </div>
 </footer>
@@ -1026,18 +698,15 @@
 
   const contactBlock = document.getElementById("contactBlock");
   contactBlock.innerHTML = `📍 Zone : <b>${ZONE_TEXT}</b><br/>✉️ Email : <b>${CONTACT_EMAIL}</b>`;
-  const mailtoBtn = document.getElementById("mailtoBtn");
-  mailtoBtn.setAttribute("href", "mailto:" + CONTACT_EMAIL);
+  document.getElementById("mailtoBtn").setAttribute("href", "mailto:" + CONTACT_EMAIL);
 
   // Filtre tarifs
   const search = document.getElementById("search");
   const category = document.getElementById("category");
   const rows = Array.from(document.querySelectorAll("#tarifsBody tr"));
-
   function applyFilter(){
     const q = (search.value || "").toLowerCase().trim();
     const cat = category.value;
-
     rows.forEach(tr => {
       const text = tr.innerText.toLowerCase();
       const rowCat = tr.getAttribute("data-cat");
@@ -1051,7 +720,6 @@
 
   // Devis email prérempli
   const form = document.getElementById("quoteForm");
-
   window.prefillDevis = function(packText){
     document.querySelector('textarea[name="details"]').value =
       `Je souhaite : ${packText}\n` +
@@ -1096,34 +764,40 @@ ${name}`
 
 <!-- Booqable (1 seule fois, à la fin) -->
 <script src="https://5096decc-baf5-4d9e-8498-7176b559436b.assets.booqable.com/v2/booqable.js" defer></script>
+
 <script>
 (function(){
   function enhanceOrderBar(){
-    // On cible directement les conteneurs "Details-..." (classes hashées)
-    const candidates = document.querySelectorAll(
-      'div[class^="Details-"], div[class*=" Details-"]'
-    );
-
+    // On cherche les conteneurs "Details-..." (classes hashées)
+    const candidates = document.querySelectorAll('div[class^="Details-"], div[class*=" Details-"]');
     candidates.forEach(details => {
       // Il faut 2 dates pour être sûr que c'est la barre période
       const dates = details.querySelectorAll('p[class^="DateTime-"], p[class*=" DateTime-"]');
       if(dates.length < 2) return;
-
-      // Déjà fait ? on sort
       if(details.classList.contains('ts-orderbar')) return;
 
-      // Ajout de nos classes stables
       details.classList.add('ts-orderbar');
       dates.forEach(p => p.classList.add('ts-pill'));
 
-      // Flèche (font-awesome i ou svg)
       const arrow = details.querySelector('i, svg');
       if(arrow) arrow.classList.add('ts-arrow');
     });
   }
 
-  // Relances multiples (Booqable met parfois du temps à injecter)
-  const run = () => enhanceOrderBar();
+  function syncCartOpenState(){
+    // Heuristique: si un drawer booqable est présent, on considère le panier "open"
+    const drawer = document.querySelector('[class*="booqable"] [class*="Drawer"], [class*="booqable"] [class*="DrawerWrapper"]');
+    if(drawer){
+      document.body.classList.add('ts-cart-open');
+    }else{
+      document.body.classList.remove('ts-cart-open');
+    }
+  }
+
+  const run = () => {
+    enhanceOrderBar();
+    syncCartOpenState();
+  };
 
   // 1) tout de suite
   run();
@@ -1131,66 +805,18 @@ ${name}`
   // 2) après chargement complet
   window.addEventListener("load", run);
 
-  // 3) plusieurs relances courtes (très efficace avec Booqable)
+  // 3) relances courtes (Booqable injecte parfois tard)
   let n = 0;
   const timer = setInterval(() => {
     run();
     n++;
-    if(n > 20) clearInterval(timer); // ~10s
+    if(n > 30) clearInterval(timer); // ~15s
   }, 500);
 
-  // 4) re-render (Clear dates, etc.)
+  // 4) re-render (Clear dates, ouverture/fermeture drawer, etc.)
   const obs = new MutationObserver(run);
   obs.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

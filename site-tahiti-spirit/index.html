@@ -434,6 +434,41 @@
         padding: 14px !important;
       }
     }
+    /* =========================================================
+   BOOQABLE — PANIER FULL SCREEN (robuste)
+   ========================================================= */
+
+/* Le conteneur dialog (souvent présent) */
+    [class*="booqable"] [role="dialog"],
+    [class*="booqable"] [class*="Drawer"],
+    [class*="booqable"] [class*="Cart"],
+    [class*="booqable"] [class*="Modal"]{
+      position: fixed !important;
+      inset: 0 !important;          /* top/right/bottom/left = 0 */
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+   }
+
+/* Si un wrapper limite la taille */
+    [class*="booqable"] [class*="Wrapper"],
+    [class*="booqable"] [class*="Container"]{
+      max-width: 100vw !important;
+   }
+
+/* Contenu scrollable (pour éviter que ça déborde) */
+    [class*="booqable"] [class*="Content"],
+    [class*="booqable"] [class*="Body"]{
+      max-height: calc(100vh - 70px) !important; /* laisse la place au header */
+      overflow-y: auto !important;
+   }
+
+/* Header panier */
+    [class*="booqable"] [class*="Header"]{
+      min-height: 70px !important;
+   }
   </style>
 </head>
 
@@ -820,3 +855,4 @@ ${name}`
 </script>
 </body>
 </html>
+

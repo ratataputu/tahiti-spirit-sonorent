@@ -527,6 +527,54 @@
       flex: 0 0 auto !important;
       font-size: 18px !important;
    }
+    /* =========================================================
+   BOOQABLE — BARRE PÉRIODE (sous "MY ORDER") toujours grande
+   ========================================================= */
+
+/* On cible les classes "hashées" de Booqable avec des sélecteurs génériques */
+    .ts-orderbar{
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:10px !important;
+
+      width:100% !important;
+      padding:12px 12px !important;
+      border-radius:18px !important;
+
+      background: rgba(255,255,255,0.14) !important;
+      border: 1px solid rgba(255,255,255,0.22) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
+   }
+
+/* Les deux "pills" de date (gauche / droite) */
+    .ts-orderbar .ts-pill{
+      flex: 1 1 0 !important;
+      min-width: 140px !important;
+
+      padding:10px 12px !important;
+      border-radius:999px !important;
+
+      background: rgba(11,12,16,0.25) !important;
+      border: 1px solid rgba(255,255,255,0.18) !important;
+
+      color:#fff !important;
+      font-weight:800 !important;
+      font-size:14px !important;
+      text-align:center !important;
+
+      white-space:nowrap !important;
+      overflow:hidden !important;
+      text-overflow:ellipsis !important;
+   }
+
+/* La flèche au milieu */
+    .ts-orderbar .ts-arrow{
+      flex:0 0 auto !important;
+      opacity:0.95 !important;
+      font-size:18px !important;
+      color:#fff !important;
+   }
   </style>
 </head>
 
@@ -1038,9 +1086,44 @@ ${name}`
 
 <!-- Booqable (1 seule fois, à la fin) -->
 <script src="https://5096decc-baf5-4d9e-8498-7176b559436b.assets.booqable.com/v2/booqable.js" defer></script>
+<script>
+(function(){
+  function enhanceOrderBar(){
+    // Le bloc période (sous "MY ORDER") ressemble à ton HTML :
+    // <div class="Details-xxxx"> ... <p class="DateTime-xxxx">...</p> ... </div>
 
+    document.querySelectorAll('[class*="booqable"] [class^="Details-"], [class*="booqable"] [class*="Details-"]')
+      .forEach(details => {
+        // On évite de retraiter 1000 fois
+        if(details.classList.contains('ts-orderbar')) return;
+
+        // On vérifie qu'il y a bien 2 dates dedans (les <p class="DateTime-...">)
+        const dates = details.querySelectorAll('p[class^="DateTime-"], p[class*="DateTime-"]');
+        if(dates.length < 2) return;
+
+        details.classList.add('ts-orderbar');
+
+        // On stylise chaque date en "pill"
+        dates.forEach(p => p.classList.add('ts-pill'));
+
+        // On stylise la flèche
+        const arrow = details.querySelector('i, svg');
+        if(arrow) arrow.classList.add('ts-arrow');
+      });
+  }
+
+  // 1er passage
+  enhanceOrderBar();
+
+  // Re-passage à chaque re-render (Clear dates, etc.)
+  const obs = new MutationObserver(enhanceOrderBar);
+  obs.observe(document.body, { childList:true, subtree:true });
+
+})();
+</script>
 </body>
 </html>
+
 
 
 

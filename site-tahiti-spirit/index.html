@@ -608,7 +608,53 @@
       color: #111827 !important;
       opacity: 1 !important;
    }
+    /* =========================================================
+   BOOQABLE — Agrandir la fenêtre du panier (MY ORDER)
+   ========================================================= */
 
+/* Largeur du panneau (de 420px à ce que tu veux) */
+    [class*="booqable"] .DrawerWrapper,
+    [class*="booqable"] .Drawer,
+    [class*="booqable"] .Drawer-dfVgHx {
+      width: 520px !important;         /* 👈 tu peux mettre 550px, 600px… */
+      max-width: 95vw !important;
+   }
+
+/* Hauteur du panneau pop-up */
+    [class*="booqable"] .Drawer,
+    [class*="booqable"] .Drawer-dfVgHx {
+      height: 90vh !important;         /* grand mais confortable */
+      max-height: 95vh !important;
+   }
+
+/* Scroll propre quand le panier déborde */
+    [class*="booqable"] .ContentWrapper,
+    [class*="booqable"] .Content {
+      overflow-y: auto !important;
+      padding: 20px !important;
+   }
+
+/* Header (“MY ORDER”) : plus haut et lisible */
+    [class*="booqable"] .HeaderWrapper,
+    [class*="booqable"] .Header-dklsJD {
+      padding: 20px 26px !important;
+      font-size: 20px !important;
+   }
+
+/* Fond du panneau plus harmonieux */
+    [class*="booqable"] .DrawerWrapper {
+      border-radius: 20px !important; 
+   }
+
+/* Sur mobile : on garde quelque chose de propre */
+    @media (max-width: 500px){
+      [class*="booqable"] .Drawer,
+      [class*="booqable"] .Drawer-dfVgHx {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+     }
+   }
   </style>
 </head>
 
@@ -1170,6 +1216,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

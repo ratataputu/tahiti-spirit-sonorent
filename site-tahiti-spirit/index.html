@@ -496,50 +496,6 @@
       position: relative !important;
       z-index: 1 !important;
    }
-    /* ====== MENU HAMBURGER ====== */
-
-/* Bouton hamburger (mobile) */
-    .hamburger{
-      font-size: 30px;
-      cursor: pointer;
-      display: none; /* caché sur PC */
-      color: var(--text);
-      user-select: none;
-   }
-
-/* Nav mobile fermé par défaut */
-    @media (max-width: 900px){
-
-      .hamburger{
-        display: block; /* visible sur mobile */
-     }
-
-      .navlinks{
-        position: absolute;
-        top: 70px;              /* sous la barre */
-        right: 24px;
-        width: 180px;
-        padding: 14px;
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-
-        background: rgba(18,20,27,0.95);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 8px 30px rgba(0,0,0,.45);
-     }
-
-      .navlinks a{
-        padding: 10px;
-        border-radius: 10px;
-     }
-
-      .navlinks.open{
-        display: flex;
-     }
-   }
     /* =========================================================
    MENU HAMBURGER PREMIUM (glass + animé + overlay)
    ========================================================= */
@@ -1115,6 +1071,7 @@ ${name}`
 
 </body>
 </html>
+
 
 
 

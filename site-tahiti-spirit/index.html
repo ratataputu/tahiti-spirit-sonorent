@@ -972,16 +972,11 @@ ${name}`
   obs.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
-  <script>
-  const hamburger = document.getElementById("hamburger");
-  const navlinks = document.getElementById("navlinks");
-
-  hamburger.addEventListener("click", () => {
-    navlinks.classList.toggle("open");
-  });
-</script>
 
   <script>
+/* ===========================
+   MENU HAMBURGER PREMIUM
+   =========================== */
 (function(){
   const header = document.querySelector("header");
   const btn = document.getElementById("menuBtn");
@@ -1006,56 +1001,68 @@ ${name}`
     header.classList.contains("menu-open") ? closeMenu() : openMenu();
   }
 
-  // Toggle au clic bouton
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleMenu();
   });
 
-  // Clic overlay => ferme
   overlay.addEventListener("click", closeMenu);
 
-  // Clic sur un lien => ferme (et laisse la navigation se faire)
   nav.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if(a) closeMenu();
+    if(e.target.closest("a")) closeMenu();
   });
 
-  // ESC => ferme
   document.addEventListener("keydown", (e) => {
     if(e.key === "Escape") closeMenu();
   });
 
-  // Si on repasse en desktop (resize), on ferme
   window.addEventListener("resize", () => {
     if(window.innerWidth > 900) closeMenu();
   });
 
-  // Si on revient via cache (pageshow), on ferme (évite états bizarres)
+  // évite menu "bloqué" au retour via cache
   window.addEventListener("pageshow", closeMenu);
 })();
 </script>
 
-  <script>
+<script>
+/* ===========================
+   LIEN ACTIF (Packs/Options/Devis)
+   =========================== */
 (function(){
   const nav = document.getElementById("navlinks");
   if(!nav) return;
 
+  function normalizeHash(h){
+    return (h || "").trim().toLowerCase();
+  }
+
+  function hashFromHref(href){
+    if(!href) return "";
+    const i = href.indexOf("#");
+    return i >= 0 ? normalizeHash(href.slice(i)) : "";
+  }
+
   function setActive(){
-    const hash = (location.hash || "").toLowerCase(); // "#packs" etc.
+    const hash = normalizeHash(location.hash); // "#packs" etc.
+
+    // reset
     nav.querySelectorAll("a").forEach(a => a.classList.remove("active"));
 
+    // Sur la home : active seulement si on a un hash
     if(!hash) return;
 
     nav.querySelectorAll("a").forEach(a => {
-      const href = (a.getAttribute("href") || "").toLowerCase();
-      if(href.includes(hash)) a.classList.add("active");
+      const h = hashFromHref(a.getAttribute("href"));
+      if(h && h === hash) a.classList.add("active");
     });
   }
 
   window.addEventListener("load", setActive);
   window.addEventListener("pageshow", setActive);
   window.addEventListener("hashchange", setActive);
+
+  // si clic sur un lien, le hash change après -> on laisse le temps à l'URL
   nav.addEventListener("click", () => setTimeout(setActive, 0));
 
   setActive();
@@ -1063,8 +1070,10 @@ ${name}`
 </script>
 
 
+
 </body>
 </html>
+
 
 
 

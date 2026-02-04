@@ -860,8 +860,17 @@ ${name}`
   obs.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
+  <script>
+  const hamburger = document.getElementById("hamburger");
+  const navlinks = document.getElementById("navlinks");
+
+  hamburger.addEventListener("click", () => {
+    navlinks.classList.toggle("open");
+  });
+</script>
 </body>
 </html>
+
 
 
 

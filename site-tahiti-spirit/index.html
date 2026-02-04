@@ -153,25 +153,6 @@
     }
     .select{min-width: 190px}
 
-    table{
-      width:100%;
-      border-collapse: collapse;
-      overflow:hidden;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(18,20,27,.55);
-    }
-    th, td{
-      padding:12px 12px;
-      border-bottom:1px solid var(--line);
-      text-align:left;
-      vertical-align:top;
-      font-size:14px;
-    }
-    th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
-    tr:hover td{background: rgba(255,255,255,.03)}
-    .muted{color:var(--muted)}
-
     .kpiRow{
       display:grid; gap:14px;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -238,7 +219,7 @@
     }
 
     /* =========================================================
-       BOOQABLE — selects lisibles (éviter texte gris illisible)
+       BOOQABLE — selects lisibles
        ========================================================= */
     .booqable select,
     .booqable option,
@@ -250,8 +231,7 @@
     }
 
     /* =========================================================
-       BOOQABLE / DayPicker — boutons ronds + style + header foncé
-       (objectif: lisible même si fond blanc)
+       BOOQABLE / DayPicker — header & jours lisibles
        ========================================================= */
     .DayPicker,
     .DayPicker-Month,
@@ -259,7 +239,6 @@
       background: #ffffff !important;
     }
 
-    /* Mois */
     .DayPicker-Caption,
     .DayPicker-Caption > div{
       color: #111827 !important;
@@ -267,7 +246,6 @@
       font-size: 20px !important;
     }
 
-    /* Jours semaine */
     .DayPicker-Weekday,
     .DayPicker-Weekday abbr{
       color: #111827 !important;
@@ -277,14 +255,12 @@
       text-transform: uppercase;
     }
 
-    /* Flèches navigation mois */
     .DayPicker-NavButton,
     .DayPicker-NavButton:hover{
       color: #111827 !important;
       opacity: 1 !important;
     }
 
-    /* Case jour = gros rond */
     .DayPicker-Week{ margin: 8px 0 !important; }
     .DayPicker-Day{
       width: 40px !important;
@@ -302,14 +278,12 @@
       justify-content:center !important;
     }
 
-    /* Chiffre */
     .DayPicker-Day__date{
       font-size: 18px !important;
       font-weight: 900 !important;
       color: #0b0c10 !important;
     }
 
-    /* Jour dispo */
     .DayPicker-Day[aria-disabled="false"]{
       background: linear-gradient(135deg, #6ee7ff, #a78bfa) !important;
       box-shadow: 0 0 14px rgba(110,231,255,.55) !important;
@@ -321,7 +295,6 @@
       box-shadow: 0 0 18px rgba(110,231,255,.9) !important;
     }
 
-    /* Jour sélectionné */
     .DayPicker-Day--selected{
       background: #ffffff !important;
       border: 3px solid #6ee7ff !important;
@@ -331,7 +304,6 @@
       color: #111827 !important;
     }
 
-    /* Jours indispos */
     .DayPicker-Day[aria-disabled="true"]{
       background: rgba(0,0,0,.05) !important;
       opacity: 0.35 !important;
@@ -340,8 +312,7 @@
     }
 
     /* =========================================================
-       BOOQABLE — BARRE PÉRIODE (sous "MY ORDER") via classes stables
-       (JS ajoute .ts-orderbar / .ts-pill / .ts-arrow)
+       BOOQABLE — BARRE PÉRIODE (JS ajoute .ts-orderbar/.ts-pill/.ts-arrow)
        ========================================================= */
     .ts-orderbar{
       display:flex !important;
@@ -386,12 +357,11 @@
       font-size:18px !important;
       color:#fff !important;
     }
-        #booqable-sidebar-inner .ts-orderbar{
-      width: 100% !important;
-   }
+
+    #booqable-sidebar-inner .ts-orderbar{ width:100% !important; }
+
     /* =========================================================
-       BOOQABLE — PANIER FULL SCREEN (MY ORDER)
-       Objectif: 100% écran sur desktop ET mobile
+       ✅ BOOQABLE — PANIER FULLSCREEN (PROPRE, ciblé sur sidebar)
        ========================================================= */
 
     /* Quand le panier est ouvert, on bloque le scroll de la page (JS ajoute .ts-cart-open au body) */
@@ -400,115 +370,7 @@
       height: 100vh !important;
     }
 
-    /* Fullscreen: on vise les "drawers" par motifs de classes (robuste) */
-    [class*="booqable"] [class*="Drawer"],
-    [class*="booqable"] [class*="DrawerWrapper"],
-    [class*="booqable"] [class^="Drawer-"],
-    [class*="booqable"] [class^="DrawerWrapper-"]{
-      width: 100vw !important;
-      max-width: 100vw !important;
-      height: 100vh !important;
-      max-height: 100vh !important;
-      border-radius: 0 !important;
-    }
-
-    /* L’intérieur doit pouvoir scroller */
-    [class*="booqable"] [class*="Content"],
-    [class*="booqable"] [class*="ContentWrapper"]{
-      height: calc(100vh - 72px) !important; /* laisse la place au header du drawer */
-      max-height: calc(100vh - 72px) !important;
-      overflow-y: auto !important;
-      padding: 18px !important;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* Header du panier (MY ORDER) un peu plus confortable */
-    [class*="booqable"] [class*="Header"],
-    [class*="booqable"] [class*="HeaderWrapper"]{
-      padding: 18px 18px !important;
-      font-size: 18px !important;
-    }
-
-    /* Sur très petit écran: padding plus compact */
-    @media (max-width: 500px){
-      [class*="booqable"] [class*="Content"],
-      [class*="booqable"] [class*="ContentWrapper"]{
-        padding: 14px !important;
-      }
-    }
-    /* =========================================================
-   BOOQABLE — PANIER FULL SCREEN (robuste)
-   ========================================================= */
-
-/* Le conteneur dialog (souvent présent) */
-    [class*="booqable"] [role="dialog"],
-    [class*="booqable"] [class*="Drawer"],
-    [class*="booqable"] [class*="Cart"],
-    [class*="booqable"] [class*="Modal"]{
-      position: fixed !important;
-      inset: 0 !important;          /* top/right/bottom/left = 0 */
-      width: 100vw !important;
-      max-width: 100vw !important;
-      height: 100vh !important;
-      max-height: 100vh !important;
-      border-radius: 0 !important;
-   }
-
-/* Si un wrapper limite la taille */
-    [class*="booqable"] [class*="Wrapper"],
-    [class*="booqable"] [class*="Container"]{
-      max-width: 100vw !important;
-   }
-
-/* Contenu scrollable (pour éviter que ça déborde) */
-    [class*="booqable"] [class*="Content"],
-    [class*="booqable"] [class*="Body"]{
-      max-height: calc(100vh - 70px) !important; /* laisse la place au header */
-      overflow-y: auto !important;
-   }
-
-/* Header panier */
-    [class*="booqable"] [class*="Header"]{
-      min-height: 70px !important;
-   }
-    /* =========================================================
-   BOOQABLE — BARRE "Select a rental period" (quand pas de dates)
-   ========================================================= */
-    [class*="booqable"] .DatesBase-gxTwtT{
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 10px !important;
-
-      padding: 14px 14px !important;
-      border-radius: 18px !important;
-
-      background: rgba(0,0,0,0.20) !important;
-      border: 1px solid rgba(255,255,255,0.25) !important;
-      backdrop-filter: blur(10px) !important;
-   }
-
-/* Texte */
-    [class*="booqable"] .ChoosePeriod-goDuyd{
-      margin: 0 !important;
-      color: #ffffff !important;
-      font-weight: 900 !important;
-      font-size: 14px !important;
-      opacity: 0.95 !important;
-   }
-
-/* Icône (sliders) */
-    [class*="booqable"] .DatesBase-gxTwtT .Icon-cMkYmG{
-      color: #ffffff !important;
-      opacity: 0.95 !important;
-      font-size: 16px !important;
-   }
-    /* =========================================================
-   BOOQABLE — PANIER FULL SCREEN (sélecteurs stables par ID)
-   ========================================================= */
-
-/* Le wrapper global (overlay + structure) */
+    /* Overlay + blur léger (évite l’écran noir) */
     #booqable-sidebar{
       position: fixed !important;
       inset: 0 !important;
@@ -517,9 +379,12 @@
       max-width: 100vw !important;
       max-height: 100vh !important;
       z-index: 999999 !important;
-   }
 
-/* Le panneau lui-même */
+      background: rgba(0,0,0,0.35) !important;
+      backdrop-filter: blur(6px) !important;
+    }
+
+    /* Le panneau panier en plein écran */
     #booqable-sidebar-inner{
       position: fixed !important;
       inset: 0 !important;
@@ -529,61 +394,34 @@
       max-height: 100vh !important;
       border-radius: 0 !important;
       margin: 0 !important;
-   }
 
-/* Zone du contenu (pour scroller proprement) */
+      background: rgba(18,20,27,0.96) !important;
+      color: #f4f6fb !important;
+    }
+
+    /* Zone du contenu scrollable */
     #booqable-sidebar-inner #booqable-sidebar-lines{
-      height: calc(100vh - 70px) !important; /* on laisse le header respirer */
+      height: calc(100vh - 70px) !important;
       overflow-y: auto !important;
-   }
+      -webkit-overflow-scrolling: touch;
+    }
 
-/* Header du panier (barre bleue / titre / croix) */
+    /* Header du panier */
     #booqable-sidebar-inner .bq-sidebar-head{
       min-height: 70px !important;
-   }
+    }
 
-/* Sur mobile : pareil, 100% écran */
-    @media (max-width: 700px){
-      #booqable-sidebar,
-      #booqable-sidebar-inner{
-        width: 100vw !important;
-        height: 100vh !important;
-        border-radius: 0 !important;
-     }
-   }
-    /* Empêche le scroll de la page quand le panier full-screen est ouvert */
+    /* Empêche le scroll de la page quand le panier est ouvert (fallback) */
     body:has(#booqable-sidebar-inner.open){
       overflow: hidden !important;
       height: 100vh !important;
-   }
-    #booqable-sidebar-inner{
-      background: rgba(18,20,27,0.96) !important;
-      color: #f4f6fb !important;
-   }
+    }
 
-/* Texte dans le panier */
+    /* Texte dans le panier */
     #booqable-sidebar-inner .bq-cleanstate,
     #booqable-sidebar-inner .bq-title{
       color: #f4f6fb !important;
-   }
-    /* Overlay transparent & propre */
-    .booqable-cart-overlay {
-      background: rgba(15,17,22,0.55) !important;
-      backdrop-filter: blur(8px) !important;
-   }
-
-/* Panier propre en fullscreen */
-    .booqable-cart {
-      position: fixed !important;
-      top: 0 !important;
-      right: 0 !important;
-      width: 520px !important;  /* FULLSCREEN RESPONSIVE */
-      max-width: 100% !important;
-      height: 100% !important;
-      background: #111522 !important;
-      border-left: 1px solid rgba(255,255,255,0.12);
-      overflow-y: auto !important;
-   }
+    }
   </style>
 </head>
 
@@ -663,7 +501,7 @@
         <div class="price">90 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="1-pack-soiree-80-120-pers"></div>
-          <button class="btn primary" onclick="prefillDevis('Pack Soirée 80–120 pers. (90€/jour)')">Demander un devis
+          <button class="btn primary" type="button" onclick="prefillDevis('Pack Soirée 80–120 pers. (90€/jour)')">Demander un devis</button>
         </div>
       </article>
 
@@ -673,7 +511,7 @@
         <div class="price">150 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="2-pack-soiree-150-200-pers"></div>
-          <button class="btn primary" onclick="prefillDevis('Pack Soirée 150–200 pers. (150€/jour)')">Demander un devis
+          <button class="btn primary" type="button" onclick="prefillDevis('Pack Soirée 150–200 pers. (150€/jour)')">Demander un devis</button>
         </div>
       </article>
 
@@ -683,7 +521,7 @@
         <div class="price">180 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="3-pack-concert-groupe-90913ec3-a4bb-477e-96d9-ba40e780be02"></div>
-          <button class="btn primary" onclick="prefillDevis('Pack Concert / Groupe (180€/jour)')">Demander un devis
+          <button class="btn primary" type="button" onclick="prefillDevis('Pack Concert / Groupe (180€/jour)')">Demander un devis</button>
         </div>
       </article>
 
@@ -693,7 +531,7 @@
         <div class="price">250 € <span>/ jour</span></div>
         <div class="actions">
           <div class="booqable-product" data-id="4-pack-concert-pro-x32-in-ear"></div>
-          <button class="btn primary" onclick="prefillDevis('Pack Concert PRO (X32 + In-ear) – 250€/jour')">Demander un devis
+          <button class="btn primary" type="button" onclick="prefillDevis('Pack Concert PRO (X32 + In-ear) – 250€/jour')">Demander un devis</button>
         </div>
       </article>
 
@@ -793,24 +631,6 @@
   contactBlock.innerHTML = `📍 Zone : <b>${ZONE_TEXT}</b><br/>✉️ Email : <b>${CONTACT_EMAIL}</b>`;
   document.getElementById("mailtoBtn").setAttribute("href", "mailto:" + CONTACT_EMAIL);
 
-  // Filtre tarifs
-  const search = document.getElementById("search");
-  const category = document.getElementById("category");
-  const rows = Array.from(document.querySelectorAll("#tarifsBody tr"));
-  function applyFilter(){
-    const q = (search.value || "").toLowerCase().trim();
-    const cat = category.value;
-    rows.forEach(tr => {
-      const text = tr.innerText.toLowerCase();
-      const rowCat = tr.getAttribute("data-cat");
-      const matchQ = !q || text.includes(q);
-      const matchCat = (cat === "all") || (rowCat === cat);
-      tr.style.display = (matchQ && matchCat) ? "" : "none";
-    });
-  }
-  search.addEventListener("input", applyFilter);
-  category.addEventListener("change", applyFilter);
-
   // Devis email prérempli
   const form = document.getElementById("quoteForm");
   window.prefillDevis = function(packText){
@@ -861,10 +681,8 @@ ${name}`
 <script>
 (function(){
   function enhanceOrderBar(){
-    // On cherche les conteneurs "Details-..." (classes hashées)
     const candidates = document.querySelectorAll('div[class^="Details-"], div[class*=" Details-"]');
     candidates.forEach(details => {
-      // Il faut 2 dates pour être sûr que c'est la barre période
       const dates = details.querySelectorAll('p[class^="DateTime-"], p[class*=" DateTime-"]');
       if(dates.length < 2) return;
       if(details.classList.contains('ts-orderbar')) return;
@@ -878,9 +696,10 @@ ${name}`
   }
 
   function syncCartOpenState(){
-    // Heuristique: si un drawer booqable est présent, on considère le panier "open"
-    const drawer = document.querySelector('[class*="booqable"] [class*="Drawer"], [class*="booqable"] [class*="DrawerWrapper"]');
-    if(drawer){
+    // ✅ plus robuste : on détecte le sidebar (stable) plutôt que les classes Drawer hashées
+    const sidebarInner = document.getElementById('booqable-sidebar-inner');
+    const isOpen = !!(sidebarInner && sidebarInner.classList.contains('open'));
+    if(isOpen){
       document.body.classList.add('ts-cart-open');
     }else{
       document.body.classList.remove('ts-cart-open');
@@ -892,35 +711,19 @@ ${name}`
     syncCartOpenState();
   };
 
-  // 1) tout de suite
   run();
-
-  // 2) après chargement complet
   window.addEventListener("load", run);
 
-  // 3) relances courtes (Booqable injecte parfois tard)
   let n = 0;
   const timer = setInterval(() => {
     run();
     n++;
-    if(n > 30) clearInterval(timer); // ~15s
+    if(n > 30) clearInterval(timer);
   }, 500);
 
-  // 4) re-render (Clear dates, ouverture/fermeture drawer, etc.)
   const obs = new MutationObserver(run);
   obs.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

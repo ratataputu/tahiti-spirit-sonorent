@@ -566,7 +566,24 @@
     #booqable-sidebar-inner .bq-title{
       color: #f4f6fb !important;
    }
+    /* Overlay transparent & propre */
+    .booqable-cart-overlay {
+      background: rgba(15,17,22,0.55) !important;
+      backdrop-filter: blur(8px) !important;
+   }
 
+/* Panier propre en fullscreen */
+    .booqable-cart {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      width: 520px !important;  /* FULLSCREEN RESPONSIVE */
+      max-width: 100% !important;
+      height: 100% !important;
+      background: #111522 !important;
+      border-left: 1px solid rgba(255,255,255,0.12);
+      overflow-y: auto !important;
+   }
   </style>
 </head>
 
@@ -896,6 +913,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

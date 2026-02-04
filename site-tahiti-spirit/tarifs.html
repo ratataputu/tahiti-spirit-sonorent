@@ -1,281 +1,523 @@
-  <!doctype html>
+<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tarifs à l’unité – Tahiti Spirit - sono rent</title>
+  <title>Tarifs – Tahiti Spirit - sono rent</title>
   <meta name="description" content="Tarifs à l’unité : enceintes, subs, micros, consoles, in-ear, lumière et accessoires à Nantes." />
 
-  <!-- Favicons (doivent être dans le même dossier que ce fichier) -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="icon" href="favicon.ico">
-  
-  <!-- Si tu as un fichier CSS global, garde ce lien et adapte le nom si besoin -->
-  <!-- <link rel="stylesheet" href="style.css" /> -->
 
   <style>
     :root{
-      --bg:#0f1116;
-      --card:#151927;
-      --muted:#9aa4b2;
+      --bg:#181b24;
+      --muted:#a7b0c0;
       --text:#f4f6fb;
-      --line:rgba(255,255,255,.10);
-      --accent:#7dd3fc;
-      --btn:#1f2937;
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1600px 800px at 30% -15%, rgba(167,139,250,0.32), transparent 70%),
+        radial-gradient(1500px 750px at 70% -5%, rgba(110,231,255,0.30), transparent 70%),
+        radial-gradient(900px 400px at 50% 120%, rgba(255,90,170,0.08), transparent 75%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    .nav{
-      position:sticky;top:0;z-index:20;
-      background:rgba(15,17,22,.86);backdrop-filter:blur(10px);
+
+    /* HEADER / NAV (identique à l’accueil) */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,12,16,.7);
       border-bottom:1px solid var(--line);
     }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{font-weight:800;letter-spacing:.3px}
-    .menu{display:flex;gap:14px;flex-wrap:wrap}
-    .menu a{padding:10px 12px;border-radius:10px;color:var(--muted)}
-    .menu a:hover{background:rgba(255,255,255,.06);color:var(--text)}
-    .menu a.active{background:rgba(125,211,252,.12);color:var(--text);border:1px solid rgba(125,211,252,.25)}
-    .hero{padding:28px 0 14px}
-    h1{font-size:32px;line-height:1.1;margin:0 0 10px}
-    .sub{color:var(--muted);max-width:70ch;margin:0 0 16px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 24px; max-width:1100px; margin:0 auto;
+      position: relative;
+    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+    .brand strong{font-size:15px;letter-spacing:.2px}
+    .brand span{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{
+      padding:8px 10px; border-radius:12px;
+      text-decoration:none; color:var(--muted);
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{border-color:var(--line);color:var(--text)}
+
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:11px 14px;border-radius:12px;border:1px solid var(--line);
-      background:rgba(255,255,255,.06);color:var(--text)
-    }
-    .btn:hover{border-color:rgba(255,255,255,.22)}
-    .btn.primary{background:rgba(125,211,252,.18);border-color:rgba(125,211,252,.35)}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
       border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-    .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:12px 0 12px}
-    .select, .search{
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
       color:var(--text);
-      padding:10px 12px;border-radius:12px;
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight:600;
+    }
+    .btn:hover{background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.12)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.9));
+      color:#091018;
+    }
+
+    .card{
+      background: rgba(18,20,27,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .pageHead{
+      padding:28px 0 8px;
+    }
+    .pageHead h1{
+      margin:0 0 10px;
+      font-size:34px; line-height:1.12;
+      letter-spacing:-.6px;
+    }
+    .pageHead p{
+      margin:0;
+      color:var(--muted);
+      max-width:70ch;
+    }
+
+    .toolbar{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin: 10px 0 12px;
+    }
+    .select, .search{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
       outline:none;
     }
-    .search{min-width:240px;flex:1}
-    table{width:100%;border-collapse:collapse;overflow:hidden}
-    th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-    th{color:var(--muted);font-weight:600;font-size:13px}
-    td{font-size:14px}
-    .price{white-space:nowrap;font-weight:700}
-    .badge{
-      display:inline-block;
-      padding:4px 8px;border-radius:999px;
+    .search{min-width:260px; flex:1}
+    .select{min-width: 210px}
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      overflow:hidden;
+      border-radius: var(--radius);
       border:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      background:rgba(255,255,255,.04)
+      background: rgba(18,20,27,.55);
     }
-    .footer{padding:28px 0 42px;color:var(--muted);border-top:1px solid var(--line);margin-top:28px}
-    .note{color:var(--muted);font-size:13px;margin-top:10px}
-    @media (max-width:720px){
-      h1{font-size:26px}
+    th, td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:14px;
+    }
+    th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+    tr:hover td{background: rgba(255,255,255,.03)}
+    .price{white-space:nowrap;font-weight:800}
+    .badge{
+      display:inline-flex;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      margin-left:8px;
+      transform: translateY(-1px);
+    }
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    footer{
+      padding:28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size:13px;
+      margin-top: 24px;
+    }
+    .fineprint{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .footerBadge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background: rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+    }
+
+    /* Mobile */
+    @media (max-width: 900px){
+      .pageHead h1{font-size:28px}
       .search{min-width:100%}
-      th:nth-child(2), td:nth-child(2){display:none;} /* cache la colonne Catégorie sur mobile (badge suffit) */
+      th:nth-child(2), td:nth-child(2){display:none;} /* cache "Catégorie" sur mobile */
+    }
+
+    /* =========================================================
+       MENU HAMBURGER PREMIUM (copié de la home)
+       ========================================================= */
+    .menuBtn{
+      display:none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+    .menuBtn:active{ transform: translateY(1px); }
+
+    .menuBtn .bars{
+      width: 22px;
+      height: 16px;
+      display: grid;
+      gap: 5px;
+      margin: 0 auto;
+    }
+    .menuBtn .bars span{
+      height: 2px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(244,246,251,.95);
+      transition: transform .22s ease, opacity .18s ease, width .22s ease;
+    }
+
+    .menuOverlay{display:none;}
+
+    @media (max-width: 900px){
+      .menuBtn{display:inline-flex;align-items:center;justify-content:center;}
+
+      .navlinks{
+        position: absolute;
+        right: 24px;
+        top: 74px;
+        width: min(320px, calc(100vw - 48px));
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        padding: 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(18,20,27,.86);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 20px 60px rgba(0,0,0,.55);
+
+        opacity: 0;
+        transform: translateY(-8px) scale(.98);
+        pointer-events: none;
+        transition: opacity .18s ease, transform .18s ease;
+        z-index: 9999;
+      }
+
+      .navlinks a{
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        color: var(--text);
+        background: rgba(255,255,255,.03);
+        transition: background .18s ease, border-color .18s ease, transform .08s ease;
+      }
+      .navlinks a:hover{
+        background: rgba(255,255,255,.06);
+        border-color: rgba(255,255,255,.10);
+      }
+      .navlinks a:active{ transform: translateY(1px); }
+
+      header.menu-open .navlinks{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .menuOverlay{
+        display:block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.35);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .18s ease;
+        z-index: 9998;
+      }
+      header.menu-open .menuOverlay{
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      header.menu-open .menuBtn .bars span:nth-child(1){
+        transform: translateY(7px) rotate(45deg);
+      }
+      header.menu-open .menuBtn .bars span:nth-child(2){
+        opacity: 0;
+        width: 0;
+      }
+      header.menu-open .menuBtn .bars span:nth-child(3){
+        transform: translateY(-7px) rotate(-45deg);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
+<header>
   <div class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">Tahiti Spirit - sono rent</a>
-      <nav class="menu">
-        <a href="/#packs">Packs</a  >
-        <a class="active" href="tarifs.html">Tarifs</a>
-        <a href="/#options">Options</a>
-        <a href="/#devis">Devis</a>
-      </nav>
-    </div>
+    <a class="brand" href="/#top">
+      <img src="logo.png" style="height:50px; width:auto; border-radius:12px;" alt="Tahiti Spirit Logo">
+      <div>
+        <strong>Tahiti Spirit - sono rent</strong>
+        <span>Nantes • Enceintes • Subs • Micros • Packs</span>
+      </div>
+    </a>
+
+    <button class="menuBtn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+
+    <nav class="navlinks" id="navlinks">
+      <a href="/#packs">Packs</a>
+      <a href="/tarifs.html" style="color:var(--text);">Tarifs</a>
+      <a href="/#options">Options</a>
+      <a href="/#devis">Devis</a>
+    </nav>
   </div>
 
+  <div class="menuOverlay" id="menuOverlay" aria-hidden="true"></div>
+</header>
+
+<main class="container">
+
+  <section class="pageHead">
+    <h1>Tarifs à l’unité</h1>
+    <p>
+      Enceintes, subs, micros, consoles, in-ear, lumière et accessoires.
+      Prix / jour — packs possibles (x2, x4…).
+    </p>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+      <a class="btn primary" href="/#devis">Demander un devis</a>
+      <a class="btn" href="/">Retour à l’accueil</a>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Tarifs à l’unité">
+    <div class="toolbar">
+      <select id="cat" class="select" aria-label="Filtrer par catégorie">
+        <option value="all">Toutes catégories</option>
+        <option value="Enceintes">Enceintes</option>
+        <option value="Subs">Subs</option>
+        <option value="Micros">Micros</option>
+        <option value="Consoles">Consoles</option>
+        <option value="In-ear">In-ear</option>
+        <option value="Lumière / Fumée">Lumière / Fumée</option>
+        <option value="Pieds / supports">Pieds / supports</option>
+        <option value="Studio / Monitoring">Studio / Monitoring</option>
+        <option value="Accessoires">Accessoires</option>
+      </select>
+
+      <input id="q" class="search" type="search" placeholder="Rechercher (ex: X32, TS18S, SM58…)" />
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Équipement</th>
+          <th>Catégorie</th>
+          <th>Prix / jour</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+        <tr data-cat="Enceintes">
+          <td>Alto TS415 (15") <span class="badge">Enceintes</span></td>
+          <td>Enceintes</td>
+          <td class="price">45 €</td>
+          <td>Pack x2 : 80 €</td>
+        </tr>
+        <tr data-cat="Enceintes">
+          <td>Alto TS412 (12") <span class="badge">Enceintes</span></td>
+          <td>Enceintes</td>
+          <td class="price">40 €</td>
+          <td>Pack x2 : 70 €</td>
+        </tr>
+        <tr data-cat="Subs">
+          <td>Alto TS18S (sub 18") <span class="badge">Subs</span></td>
+          <td>Subs</td>
+          <td class="price">60 €</td>
+          <td>Pack x2 : 100 € • Pack x4 : 180 €</td>
+        </tr>
+        <tr data-cat="Consoles">
+          <td>Behringer X32 <span class="badge">Consoles</span></td>
+          <td>Consoles</td>
+          <td class="price">70 €</td>
+          <td>Console 32 canaux (pro)</td>
+        </tr>
+        <tr data-cat="Consoles">
+          <td>Behringer X32 Rack <span class="badge">Consoles</span></td>
+          <td>Consoles</td>
+          <td class="price">50 €</td>
+          <td>Idéal groupe / in-ear</td>
+        </tr>
+        <tr data-cat="In-ear">
+          <td>Xvive U4 (émetteur + 1 récepteur) <span class="badge">In-ear</span></td>
+          <td>In-ear</td>
+          <td class="price">20 €</td>
+          <td>Retours in-ear sans fil</td>
+        </tr>
+        <tr data-cat="In-ear">
+          <td>Récepteur Xvive U4R (supplémentaire) <span class="badge">In-ear</span></td>
+          <td>In-ear</td>
+          <td class="price">10 €</td>
+          <td>Pour ajouter des musiciens</td>
+        </tr>
+        <tr data-cat="Micros">
+          <td>Shure SM58 <span class="badge">Micros</span></td>
+          <td>Micros</td>
+          <td class="price">10 €</td>
+          <td>Pack 6 : 45 €</td>
+        </tr>
+        <tr data-cat="Lumière / Fumée">
+          <td>Lyre Spot MaxiSpot 30 <span class="badge">Lumière / Fumée</span></td>
+          <td>Lumière / Fumée</td>
+          <td class="price">25 €</td>
+          <td>Pack x4 : 80 €</td>
+        </tr>
+        <tr data-cat="Lumière / Fumée">
+          <td>PAR LED Party PAR 123 <span class="badge">Lumière / Fumée</span></td>
+          <td>Lumière / Fumée</td>
+          <td class="price">10 €</td>
+          <td>Pack x6 : 45 €</td>
+        </tr>
+        <tr data-cat="Lumière / Fumée">
+          <td>Machine à fumée Chauvet Hurricane 1200 <span class="badge">Lumière / Fumée</span></td>
+          <td>Lumière / Fumée</td>
+          <td class="price">15 €</td>
+          <td>Liquide possible en option</td>
+        </tr>
+        <tr data-cat="Pieds / supports">
+          <td>Pied d’enceinte <span class="badge">Pieds / supports</span></td>
+          <td>Pieds / supports</td>
+          <td class="price">5 €</td>
+          <td>Selon pack / dispo</td>
+        </tr>
+        <tr data-cat="Pieds / supports">
+          <td>Barre M20 (sub → enceinte) <span class="badge">Pieds / supports</span></td>
+          <td>Pieds / supports</td>
+          <td class="price">5 €</td>
+          <td>Recommandé avec subs</td>
+        </tr>
+        <tr data-cat="Accessoires">
+          <td>DI (1 canal) <span class="badge">Accessoires</span></td>
+          <td>Accessoires</td>
+          <td class="price">4 €</td>
+          <td>Clavier / guitare / basse</td>
+        </tr>
+        <tr data-cat="Accessoires">
+          <td>Pack câbles (selon besoin) <span class="badge">Accessoires</span></td>
+          <td>Accessoires</td>
+          <td class="price">5–10 €</td>
+          <td>XLR / jack / DMX</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">💡 Pour ajouter du matériel : duplique une ligne (&lt;tr&gt;) et change les valeurs.</p>
+  </section>
+
+</main>
+
+<footer>
   <div class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Tarifs à l’unité</h1>
-      <p class="sub">
-        Enceintes, subs, micros, consoles, in-ear, lumière et accessoires.
-        Prix / jour — packs possibles (ex : x2, x4…).
-      </p>
-
-      <div class="cta-row">
-        <a class="btn primary" href="index.html#devis">Demander un devis</a>
-        <a class="btn" href="/">Retour à l’accueil</a>
-      </div>
-    </section>
-
-    <!-- TABLE -->
-    <section class="card" aria-label="Tarifs à l’unité">
-      <div class="toolbar">
-        <select id="cat" class="select" aria-label="Filtrer par catégorie">
-          <option value="all">Toutes catégories</option>
-          <option value="Enceintes">Enceintes</option>
-          <option value="Subs">Subs</option>
-          <option value="Micros">Micros</option>
-          <option value="Consoles">Consoles</option>
-          <option value="In-ear">In-ear</option>
-          <option value="Lumière / Fumée">Lumière / Fumée</option>
-          <option value="Pieds / supports">Pieds / supports</option>
-          <option value="Studio / Monitoring">Studio / Monitoring</option>
-          <option value="Accessoires">Accessoires</option>
-        </select>
-
-        <input id="q" class="search" type="search" placeholder="Rechercher un équipement (ex: X32, TS18S, SM58…)" />
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Équipement</th>
-            <th>Catégorie</th>
-            <th>Prix / jour</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody id="rows">
-          <!-- Données reprises de ton site actuel -->
-          <tr data-cat="Enceintes">
-            <td>Alto TS415 (15") <span class="badge">Enceintes</span></td>
-            <td>Enceintes</td>
-            <td class="price">45 €</td>
-            <td>Pack x2 : 80 €</td>
-          </tr>
-          <tr data-cat="Enceintes">
-            <td>Alto TS412 (12") <span class="badge">Enceintes</span></td>
-            <td>Enceintes</td>
-            <td class="price">40 €</td>
-            <td>Pack x2 : 70 €</td>
-          </tr>
-          <tr data-cat="Subs">
-            <td>Alto TS18S (sub 18") <span class="badge">Subs</span></td>
-            <td>Subs</td>
-            <td class="price">60 €</td>
-            <td>Pack x2 : 100 € • Pack x4 : 180 €</td>
-          </tr>
-          <tr data-cat="Consoles">
-            <td>Behringer X32 <span class="badge">Consoles</span></td>
-            <td>Consoles</td>
-            <td class="price">70 €</td>
-            <td>Console 32 canaux (pro)</td>
-          </tr>
-          <tr data-cat="Consoles">
-            <td>Behringer X32 Rack <span class="badge">Consoles</span></td>
-            <td>Consoles</td>
-            <td class="price">50 €</td>
-            <td>Idéal groupe / in-ear</td>
-          </tr>
-          <tr data-cat="In-ear">
-            <td>Xvive U4 (émetteur + 1 récepteur) <span class="badge">In-ear</span></td>
-            <td>In-ear</td>
-            <td class="price">20 €</td>
-            <td>Retours in-ear sans fil</td>
-          </tr>
-          <tr data-cat="In-ear">
-            <td>Récepteur Xvive U4R (supplémentaire) <span class="badge">In-ear</span></td>
-            <td>In-ear</td>
-            <td class="price">10 €</td>
-            <td>Pour ajouter des musiciens</td>
-          </tr>
-          <tr data-cat="Micros">
-            <td>Shure SM58 <span class="badge">Micros</span></td>
-            <td>Micros</td>
-            <td class="price">10 €</td>
-            <td>Pack 6 : 45 €</td>
-          </tr>
-          <tr data-cat="Lumière / Fumée">
-            <td>Lyre Spot MaxiSpot 30 <span class="badge">Lumière / Fumée</span></td>
-            <td>Lumière / Fumée</td>
-            <td class="price">25 €</td>
-            <td>Pack x4 : 80 €</td>
-          </tr>
-          <tr data-cat="Lumière / Fumée">
-            <td>PAR LED Party PAR 123 <span class="badge">Lumière / Fumée</span></td>
-            <td>Lumière / Fumée</td>
-            <td class="price">10 €</td>
-            <td>Pack x6 : 45 €</td>
-          </tr>
-          <tr data-cat="Lumière / Fumée">
-            <td>Machine à fumée Chauvet Hurricane 1200 <span class="badge">Lumière / Fumée</span></td>
-            <td>Lumière / Fumée</td>
-            <td class="price">15 €</td>
-            <td>Liquide possible en option</td>
-          </tr>
-          <tr data-cat="Pieds / supports">
-            <td>Pied d’enceinte <span class="badge">Pieds / supports</span></td>
-            <td>Pieds / supports</td>
-            <td class="price">5 €</td>
-            <td>Selon pack / dispo</td>
-          </tr>
-          <tr data-cat="Pieds / supports">
-            <td>Barre M20 (sub → enceinte) <span class="badge">Pieds / supports</span></td>
-            <td>Pieds / supports</td>
-            <td class="price">5 €</td>
-            <td>Recommandé avec subs</td>
-          </tr>
-          <tr data-cat="Accessoires">
-            <td>DI (1 canal) <span class="badge">Accessoires</span></td>
-            <td>Accessoires</td>
-            <td class="price">4 €</td>
-            <td>Clavier / guitare / basse</td>
-          </tr>
-          <tr data-cat="Accessoires">
-            <td>Pack câbles (selon besoin) <span class="badge">Accessoires</span></td>
-            <td>Accessoires</td>
-            <td class="price">5–10 €</td>
-            <td>XLR / jack / DMX</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="note">💡 Tu peux ajouter d’autres lignes quand tu veux : il suffit de dupliquer un &lt;tr&gt; et changer les valeurs.</p>
-    </section>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      ✅ Nantes • ✅ Sono + Lumière + X32 • ✅ Devis rapide<br/>
-      © Tahiti Spirit - sono rent
+    <div class="fineprint">
+      <div class="footerBadge">✅ Nantes • ✅ Sono + Lumière + X32 • ✅ Devis rapide</div>
+      <div>© <span id="year"></span> Tahiti Spirit - sono rent</div>
     </div>
-
   </div>
+</footer>
 
-  <script>
-    const cat = document.getElementById('cat');
-    const q = document.getElementById('q');
-    const rows = Array.from(document.querySelectorAll('#rows tr'));
+<script>
+  // année footer
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function filter(){
-      const c = cat.value;
-      const s = (q.value || '').toLowerCase().trim();
+  // filtre + recherche
+  const cat = document.getElementById('cat');
+  const q = document.getElementById('q');
+  const rows = Array.from(document.querySelectorAll('#rows tr'));
 
-      rows.forEach(r => {
-        const rc = r.getAttribute('data-cat');
-        const text = r.innerText.toLowerCase();
-        const okCat = (c === 'all') || (rc === c);
-        const okSearch = !s || text.includes(s);
-        r.style.display = (okCat && okSearch) ? '' : 'none';
-      });
+  function filter(){
+    const c = cat.value;
+    const s = (q.value || '').toLowerCase().trim();
+
+    rows.forEach(r => {
+      const rc = r.getAttribute('data-cat');
+      const text = r.innerText.toLowerCase();
+      const okCat = (c === 'all') || (rc === c);
+      const okSearch = !s || text.includes(s);
+      r.style.display = (okCat && okSearch) ? '' : 'none';
+    });
+  }
+
+  cat.addEventListener('change', filter);
+  q.addEventListener('input', filter);
+  filter();
+
+  // menu hamburger premium
+  (function(){
+    const header = document.querySelector("header");
+    const btn = document.getElementById("menuBtn");
+    const nav = document.getElementById("navlinks");
+    const overlay = document.getElementById("menuOverlay");
+
+    function openMenu(){
+      header.classList.add("menu-open");
+      btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "Fermer le menu");
+    }
+    function closeMenu(){
+      header.classList.remove("menu-open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Ouvrir le menu");
+    }
+    function toggleMenu(){
+      header.classList.contains("menu-open") ? closeMenu() : openMenu();
     }
 
-    cat.addEventListener('change', filter);
-    q.addEventListener('input', filter);
-    filter();
-  </script>
+    btn.addEventListener("click", (e) => { e.stopPropagation(); toggleMenu(); });
+    overlay.addEventListener("click", closeMenu);
+    nav.addEventListener("click", (e) => { if(e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeMenu(); });
+    window.addEventListener("resize", () => { if(window.innerWidth > 900) closeMenu(); });
+    window.addEventListener("pageshow", closeMenu);
+  })();
+</script>
 
 </body>
 </html>

@@ -1019,8 +1019,65 @@ ${name}`
     navlinks.classList.toggle("open");
   });
 </script>
+
+  <script>
+(function(){
+  const header = document.querySelector("header");
+  const btn = document.getElementById("menuBtn");
+  const nav = document.getElementById("navlinks");
+  const overlay = document.getElementById("menuOverlay");
+
+  if(!header || !btn || !nav || !overlay) return;
+
+  function openMenu(){
+    header.classList.add("menu-open");
+    btn.setAttribute("aria-expanded", "true");
+    btn.setAttribute("aria-label", "Fermer le menu");
+  }
+
+  function closeMenu(){
+    header.classList.remove("menu-open");
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Ouvrir le menu");
+  }
+
+  function toggleMenu(){
+    header.classList.contains("menu-open") ? closeMenu() : openMenu();
+  }
+
+  // Toggle au clic bouton
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // Clic overlay => ferme
+  overlay.addEventListener("click", closeMenu);
+
+  // Clic sur un lien => ferme (et laisse la navigation se faire)
+  nav.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if(a) closeMenu();
+  });
+
+  // ESC => ferme
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape") closeMenu();
+  });
+
+  // Si on repasse en desktop (resize), on ferme
+  window.addEventListener("resize", () => {
+    if(window.innerWidth > 900) closeMenu();
+  });
+
+  // Si on revient via cache (pageshow), on ferme (évite états bizarres)
+  window.addEventListener("pageshow", closeMenu);
+})();
+</script>
+
 </body>
 </html>
+
 
 
 

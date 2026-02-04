@@ -527,36 +527,53 @@
   
 <script>
 (function(){
-  const links = document.querySelectorAll("nav a");
+  const nav = document.getElementById("navlinks");
+  if(!nav) return;
 
-  // URL complète
-  const url = window.location.href;
+  function getHashFromHref(href){
+    if(!href) return "";
+    const i = href.indexOf("#");
+    return i >= 0 ? href.slice(i).toLowerCase() : "";
+  }
 
-  links.forEach(a => {
-    const href = a.getAttribute("href");
+  function setActive(){
+    const path = (location.pathname || "").toLowerCase();
+    const hash = (location.hash || "").toLowerCase(); // ex: "#packs"
 
-    // 1. Page Tarifs → mettre Tarifs en active
-    if (url.includes("tarifs.html") && href.includes("tarifs.html")) {
-      a.classList.add("active");
+    // reset
+    nav.querySelectorAll("a").forEach(a => a.classList.remove("active"));
+
+    // 1) Sur tarifs.html -> Tarifs actif
+    if(path.endsWith("/tarifs.html")){
+      nav.querySelectorAll("a").forEach(a => {
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        if(href.includes("tarifs.html")) a.classList.add("active");
+      });
+      return;
     }
 
-    // 2. Ancre Packs
-    if (href.endsWith("#packs") && url.endsWith("#packs")) {
-      a.classList.add("active");
-    }
+    // 2) Sinon, on active selon le hash
+    if(!hash) return;
+    nav.querySelectorAll("a").forEach(a => {
+      const h = getHashFromHref(a.getAttribute("href"));
+      if(h && h === hash) a.classList.add("active");
+    });
+  }
 
-    // 3. Ancre Options
-    if (href.endsWith("#options") && url.endsWith("#options")) {
-      a.classList.add("active");
-    }
+  window.addEventListener("load", setActive);
+  window.addEventListener("pageshow", setActive);
+  window.addEventListener("hashchange", setActive);
 
-    // 4. Ancre Devis
-    if (href.endsWith("#devis") && url.endsWith("#devis")) {
-      a.classList.add("active");
-    }
+  nav.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if(!a) return;
+    setTimeout(setActive, 0);
   });
+
+  setActive();
 })();
 </script>
+
 
 </body>
 </html>

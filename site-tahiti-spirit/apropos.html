@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tarifs – Tahiti Spirit - sono rent</title>
-  <meta name="description" content="Tarifs à l’unité : enceintes, subs, micros, consoles, in-ear, lumière et accessoires à Nantes." />
+  <title>À propos — Tahiti Spirit · Sono Rent</title>
+  <meta name="description" content="À propos de Tahiti Spirit – Sono Rent : location sono, lumière, consoles et in-ear en Loire-Atlantique (44)." />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" href="/favicon.ico">
 
   <style>
     :root{
@@ -22,7 +21,6 @@
       --shadow: 0 18px 60px rgba(0,0,0,.35);
       --radius: 18px;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -38,7 +36,6 @@
     a{color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:24px}
 
-    /* HEADER / NAV (identique à l’accueil) */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -48,7 +45,6 @@
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       gap:16px; padding:14px 24px; max-width:1100px; margin:0 auto;
-      position: relative;
     }
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
     .brand strong{font-size:15px;letter-spacing:.2px}
@@ -61,6 +57,32 @@
     }
     .navlinks a:hover{border-color:var(--line);color:var(--text)}
 
+    .card{
+      background: rgba(18,20,27,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero{
+      padding:34px 0 18px;
+      display:grid;
+      gap:14px;
+    }
+    h1{
+      margin:0;
+      font-size:38px;
+      letter-spacing:-.6px;
+      line-height:1.12;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      max-width:80ch;
+      font-size:16px;
+    }
+
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
@@ -72,7 +94,7 @@
       text-decoration:none;
       cursor:pointer;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      font-weight:600;
+      font-weight:700;
     }
     .btn:hover{background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.12)}
     .btn:active{transform: translateY(1px)}
@@ -82,76 +104,33 @@
       color:#091018;
     }
 
-    .card{
-      background: rgba(18,20,27,.78);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:16px;
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+      margin-top:14px;
     }
-
-    .pageHead{
-      padding:28px 0 8px;
-    }
-    .pageHead h1{
+    .box{padding:18px}
+    .box h2{
       margin:0 0 10px;
-      font-size:34px; line-height:1.12;
-      letter-spacing:-.6px;
+      font-size:18px;
+      letter-spacing:-.2px;
     }
-    .pageHead p{
-      margin:0;
-      color:var(--muted);
-      max-width:70ch;
-    }
+    .box p{margin:0;color:var(--muted)}
+    .box ul{margin:10px 0 0; padding-left:18px;color:var(--muted)}
+    .box li{margin:6px 0}
 
-    .toolbar{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      margin: 10px 0 12px;
-    }
-    .select, .search{
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.10);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius: 14px;
-      outline:none;
-    }
-    .search{min-width:260px; flex:1}
-    .select{min-width: 210px}
-
-    table{
-      width:100%;
-      border-collapse: collapse;
-      overflow:hidden;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(18,20,27,.55);
-    }
-    th, td{
-      padding:12px 12px;
-      border-bottom:1px solid var(--line);
-      text-align:left;
-      vertical-align:top;
-      font-size:14px;
-    }
-    th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
-    tr:hover td{background: rgba(255,255,255,.03)}
-    .price{white-space:nowrap;font-weight:800}
     .badge{
       display:inline-flex;
-      padding:4px 8px;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
       color: var(--muted);
-      font-size:12px;
-      margin-left:8px;
-      transform: translateY(-1px);
-    }
-    .note{
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 10px;
+      font-size:13px;
     }
 
     footer{
@@ -159,233 +138,146 @@
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size:13px;
-      margin-top: 24px;
+      margin-top:28px;
     }
-    .fineprint{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-    .footerBadge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;
-      background: rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
-      color: var(--muted);
+    .fineprint{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    /* Mobile */
-    @media (max-width: 900px){
-      .pageHead h1{font-size:28px}
-      .search{min-width:100%}
-      th:nth-child(2), td:nth-child(2){display:none;} /* cache "Catégorie" sur mobile */
+    @media (max-width: 960px){
+      h1{font-size:30px}
+      .grid{grid-template-columns: 1fr}
     }
 
     /* =========================================================
-       MENU HAMBURGER PREMIUM (copié de la home)
+       BOOQABLE — PANIER (MY ORDER) EN FULL SCREEN
        ========================================================= */
-    .menuBtn{
-      display:none;
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      cursor: pointer;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    #booqable-sidebar,
+    #booqable-sidebar-inner.open{
+      z-index: 99999 !important;
     }
-    .menuBtn:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
-    .menuBtn:active{ transform: translateY(1px); }
-
-    .menuBtn .bars{
-      width: 22px;
-      height: 16px;
-      display: grid;
-      gap: 5px;
-      margin: 0 auto;
+    #booqable-sidebar-inner.open{
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+      transform: none !important;
+      box-shadow: none !important;
+      background: #fff !important;
     }
-    .menuBtn .bars span{
-      height: 2px;
-      width: 100%;
-      border-radius: 999px;
-      background: rgba(244,246,251,.95);
-      transition: transform .22s ease, opacity .18s ease, width .22s ease;
+    #booqable-sidebar-inner.open .bq-sidebar-head{
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 2 !important;
     }
-
-    .menuOverlay{display:none;}
-
-    @media (max-width: 900px){
-      .menuBtn{display:inline-flex;align-items:center;justify-content:center;}
-
-      .navlinks{
-        position: absolute;
-        right: 24px;
-        top: 74px;
-        width: min(320px, calc(100vw - 48px));
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        padding: 12px;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(18,20,27,.86);
-        backdrop-filter: blur(14px);
-        box-shadow: 0 20px 60px rgba(0,0,0,.55);
-
-        opacity: 0;
-        transform: translateY(-8px) scale(.98);
-        pointer-events: none;
-        transition: opacity .18s ease, transform .18s ease;
-        z-index: 9999;
-      }
-
-      .navlinks a{
-        padding: 12px 12px;
-        border-radius: 14px;
-        border: 1px solid transparent;
-        color: var(--text);
-        background: rgba(255,255,255,.03);
-        transition: background .18s ease, border-color .18s ease, transform .08s ease;
-      }
-      .navlinks a:hover{
-        background: rgba(255,255,255,.06);
-        border-color: rgba(255,255,255,.10);
-      }
-      .navlinks a:active{ transform: translateY(1px); }
-
-      header.menu-open .navlinks{
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
-      }
-
-      .menuOverlay{
-        display:block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,.35);
-        backdrop-filter: blur(6px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .18s ease;
-        z-index: 9998;
-      }
-      header.menu-open .menuOverlay{
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      header.menu-open .menuBtn .bars span:nth-child(1){
-        transform: translateY(7px) rotate(45deg);
-      }
-      header.menu-open .menuBtn .bars span:nth-child(2){
-        opacity: 0;
-        width: 0;
-      }
-      header.menu-open .menuBtn .bars span:nth-child(3){
-        transform: translateY(-7px) rotate(-45deg);
-      }
+    #booqable-sidebar-inner.open #booqable-sidebar-lines{
+      height: calc(100vh - 60px) !important;
+      overflow: auto !important;
     }
-    /* ACTIVE — uniforme (desktop + mobile) */
-    .navlinks a.active{
-      background: rgba(110,231,255,.12);
-      border: 1px solid rgba(110,231,255,.25);
-      color: var(--text);
-   }
-    /* FORCER LE STYLE DES LISTES DÉROULANTES (SELECT) */
-select, 
-select option {
-  background-color: rgba(18,20,27,0.92) !important;  /* fond foncé identique au site */
-  color: #f4f6fb !important;                         /* texte blanc */
-  border: 1px solid rgba(255,255,255,0.15) !important;
-}
-
-select:focus {
-  outline: none !important;
-  border-color: rgba(110,231,255,0.45) !important;   /* léger bleu néon, comme l'accent */
-}
-
-
   </style>
 </head>
 
 <body>
-
 <header>
   <div class="nav">
-    <a class="brand" href="/#top">
-      <img src="logo.png" style="height:50px; width:auto; border-radius:12px;" alt="Tahiti Spirit Logo">
+    <a class="brand" href="/">
+      <img src="/logo.png" style="height:50px; width:auto; border-radius:12px;" alt="Tahiti Spirit Logo">
       <div>
         <strong>Tahiti Spirit - sono rent</strong>
         <span>Nantes • Enceintes • Subs • Micros • Packs</span>
       </div>
     </a>
 
-    <button class="menuBtn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks">
-      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-
-    <nav class="navlinks" id="navlinks">
-      <a href="packs.html#packs">Packs</a>
-      <a href="/tarifs.html">Tarifs</a>
-      <a href="/packs.html#options">Options</a>
-      <a href="/packs.html#devis">Devis</a>
-      <a href="apropos.html">À propos</a>
+    <nav class="navlinks">
+      <a href="/#packs">Packs</a>
+      <a href="/#tarifs">Tarifs</a>
+      <a href="/#options">Options</a>
+      <a href="/#devis">Devis</a>
+      <a href="/apropos">À propos</a>
     </nav>
   </div>
-
-  <div class="menuOverlay" id="menuOverlay" aria-hidden="true"></div>
 </header>
 
-<section id="apropos" aria-labelledby="apropos-title">
-  <h1 id="apropos-title">À propos — Tahiti Spirit · Sono Rent</h1>
+<main class="container">
+  <section class="hero">
+    <h1>À propos — Tahiti Spirit · Sono Rent</h1>
+    <p class="lead">
+      Tahiti Spirit – Sono Rent est une entreprise spécialisée dans la location de sonorisation, d’éclairage et de matériel
+      professionnel en Loire-Atlantique (44). Nous accompagnons particuliers, associations et professionnels dans l’organisation
+      de leurs événements : soirées, mariages, concerts, spectacles, festivals et animations culturelles.
+    </p>
 
-  <p>
-    <strong>Tahiti Spirit – Sono Rent</strong> est une entreprise spécialisée dans la
-    <strong>location de sonorisation, d’éclairage et de matériel professionnel</strong>
-    en <strong>Loire-Atlantique (44)</strong>. Nous accompagnons
-    <strong>particuliers</strong>, <strong>associations</strong> et
-    <strong>professionnels</strong> dans l’organisation de leurs événements :
-    soirées, mariages, concerts, spectacles, festivals et animations culturelles.
-  </p>
+    <div class="ctaRow">
+      <a class="btn primary" href="/#devis">Demander un devis</a>
+      <a class="btn" href="/#packs">Voir les packs</a>
+      <a class="btn" href="/#tarifs">Tarifs à l’unité</a>
+    </div>
+  </section>
 
-  <p>
-    Notre mission est simple : fournir du <strong>matériel fiable, puissant et facile à installer</strong>,
-    avec des <strong>conseils adaptés</strong> pour garantir un son propre et une lumière parfaitement calibrée
-    selon ton lieu et ton public.
-  </p>
+  <section class="grid">
+    <article class="card box">
+      <h2>Ce que nous proposons</h2>
+      <ul>
+        <li>Location sono : enceintes, subs, micros, DI, câblage et accessoires.</li>
+        <li>Consoles & retours : consoles numériques (dont X32), systèmes in-ear.</li>
+        <li>Éclairage : wash, spots, ambiance et éclairage de scène.</li>
+        <li>Packs prêts à l’emploi : adaptés à la taille et au type d’événement.</li>
+        <li>Options : livraison, installation, réglages, présence d’un technicien.</li>
+      </ul>
+    </article>
 
-  <p>
-    <a href="index.html#devis">Demander un devis</a>
-    <a href="index.html#packs">Voir les packs</a>
-    <a href="index.html#tarifs">Tarifs à l’unité</a>
-  </p>
+    <aside class="card box">
+      <h2>L’esprit Tahiti Spirit</h2>
+      <p>
+        Tahiti Spirit porte une vision : un service professionnel, humain et réactif, inspiré de l’accueil polynésien.
+        Simplicité, efficacité et bonne ambiance — pour un événement sans stress et pleinement réussi.
+      </p>
 
-  <h2>Ce que nous proposons</h2>
-  <ul>
-    <li><strong>Location sono :</strong> enceintes, subs, micros, DI, câblage et accessoires.</li>
-    <li><strong>Consoles & retours :</strong> consoles numériques (dont X32), systèmes in-ear.</li>
-    <li><strong>Éclairage :</strong> wash, spots, ambiance et éclairage de scène.</li>
-    <li><strong>Packs prêts à l’emploi :</strong> adaptés à la taille et au type d’événement.</li>
-    <li><strong>Options :</strong> livraison, installation, réglages, présence d’un technicien.</li>
-  </ul>
+      <div style="margin-top:14px;">
+        <span class="badge">✅ Nantes • 44 • Sono + Lumière + X32 • Devis rapide</span>
+      </div>
+    </aside>
 
-  <h2>L’esprit Tahiti Spirit</h2>
-  <p>
-    Tahiti Spirit porte une vision : un service <strong>professionnel, humain et réactif</strong>,
-    inspiré de l’accueil polynésien. Simplicité, efficacité et bonne ambiance — pour un
-    événement sans stress et pleinement réussi.
-  </p>
+    <article class="card box">
+      <h2>Pourquoi nous choisir ?</h2>
+      <ul>
+        <li>Matériel récent, testé et vérifié avant chaque location</li>
+        <li>Conseils techniques personnalisés (DJ, live, associations, danse, spectacles…)</li>
+        <li>Packs simples + options claires pour un budget maîtrisé</li>
+      </ul>
+    </article>
 
-  <h2>Pourquoi nous choisir ?</h2>
-  <ul>
-    <li>Matériel <strong>récent</strong>, testé et vérifié avant chaque location</li>
-    <li>Conseils techniques personnalisés (DJ, live, associations, danse, spectacles…)</li>
-    <li>Packs simples + options claires pour un budget maîtrisé</li>
-  </ul>
+    <article class="card box">
+      <h2>Partenariat musical</h2>
+      <p>
+        Nous collaborons également avec un groupe de musiciens polynésiens pour proposer des animations ou concerts,
+        avec ou sans sonorisation.
+      </p>
+    </article>
+  </section>
+</main>
 
-  <h2>Partenariat musical</h2>
-  <p>
-    Nous collaborons également avec un <strong>groupe de musiciens polynésiens</strong>
-    pour proposer des animations ou concerts, avec ou sans sonorisation.
-  </p>
+<footer>
+  <div class="container">
+    <div class="fineprint">
+      <div class="badge">✅ Nantes • ✅ Sono + Lumière + X32 • ✅ Devis rapide</div>
+      <div>© <span id="year"></span> Tahiti Spirit - sono rent • <a href="/mentions-legales.html" style="color:inherit;">Mentions légales</a></div>
+    </div>
+  </div>
+</footer>
 
-  <p>✅ Nantes • 44 • Sono + Lumière + X32 • Devis rapide</p>
-</section>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- Booqable (optionnel sur /apropos : tu peux le laisser si tu veux garder le panier accessible partout) -->
+<script src="https://5096decc-baf5-4d9e-8498-7176b559436b.assets.booqable.com/v2/booqable.js" defer></script>
+</body>
+</html>

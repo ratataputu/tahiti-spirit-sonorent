@@ -422,6 +422,23 @@
     #booqable-sidebar-inner .bq-title{
       color: #f4f6fb !important;
     }
+    /* =========================================================
+   BOOQABLE — éviter l'écran sombre si le panier n'est PAS ouvert
+   (corrige le bug "page floutée" au retour depuis tarifs.html)
+   ========================================================= */
+
+/* Par défaut, le sidebar ne doit PAS capter les clics ni assombrir */
+    #booqable-sidebar{
+      opacity: 0 !important;
+      pointer-events: none !important;
+   }
+
+/* Quand le panier est ouvert (body.ts-cart-open), on active overlay */
+    body.ts-cart-open #booqable-sidebar{
+      opacity: 1 !important;
+      pointer-events: auto !important;
+   }
+
   </style>
 </head>
 
@@ -696,15 +713,20 @@ ${name}`
   }
 
   function syncCartOpenState(){
-    // ✅ plus robuste : on détecte le sidebar (stable) plutôt que les classes Drawer hashées
-    const sidebarInner = document.getElementById('booqable-sidebar-inner');
-    const isOpen = !!(sidebarInner && sidebarInner.classList.contains('open'));
-    if(isOpen){
-      document.body.classList.add('ts-cart-open');
-    }else{
-      document.body.classList.remove('ts-cart-open');
-    }
+  const sidebarInner = document.getElementById('booqable-sidebar-inner');
+
+  // Certains navigateurs restaurent l'état via cache (bfcache),
+  // donc on recalcule toujours si le panier est vraiment "open".
+  const isOpen = !!(sidebarInner && sidebarInner.classList && sidebarInner.classList.contains('open'));
+
+  if(isOpen){
+    document.body.classList.add('ts-cart-open');
+  }else{
+    document.body.classList.remove('ts-cart-open');
   }
+}
+
+
 
   const run = () => {
     enhanceOrderBar();
@@ -713,6 +735,13 @@ ${name}`
 
   run();
   window.addEventListener("load", run);
+// Quand on revient sur la page via cache (retour depuis tarifs.html)
+    window.addEventListener("pageshow", run);
+
+// Si l’onglet redevient visible, on resynchronise aussi
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) run();
+   });
 
   let n = 0;
   const timer = setInterval(() => {
@@ -727,3 +756,4 @@ ${name}`
 </script>
 </body>
 </html>
+

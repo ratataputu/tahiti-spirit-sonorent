@@ -459,6 +459,43 @@
     #booqable-sidebar-inner .ts-orderbar + *{
       margin-top: 10px !important;
    }
+    /* =========================================================
+   BOOQABLE — la liste d'articles doit démarrer SOUS la barre période
+   ========================================================= */
+
+/* Barre période toujours au-dessus */
+    #booqable-sidebar-inner .ts-orderbar{
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 9999 !important;
+
+  /* on garde un fond opaque pour éviter l'effet "texte sur texte" */
+      background: rgba(18,20,27,0.96) !important;
+      backdrop-filter: blur(10px) !important;
+
+  /* espace visuel sous la barre */
+      margin-bottom: 14px !important;
+   }
+
+/* 1) On ajoute un "coussin" en haut de la zone des lignes
+   -> ça empêche les articles de remonter sous la barre */
+    #booqable-sidebar-inner #booqable-sidebar-lines{
+      padding-top: 18px !important;
+   }
+
+/* 2) Et on pousse carrément le premier bloc du panier (fallback)
+   -> utile si Booqable ignore le padding à cause de sa structure */
+    #booqable-sidebar-inner #booqable-sidebar-lines > *:first-child{
+      margin-top: 16px !important;
+   }
+
+/* 3) Si Booqable met un transform quelque part, ça crée un nouveau contexte
+      et peut provoquer un recouvrement visuel : on isole le conteneur */
+    #booqable-sidebar-inner #booqable-sidebar-lines{
+      isolation: isolate !important;
+      position: relative !important;
+      z-index: 1 !important;
+   }
   </style>
 </head>
 
@@ -776,6 +813,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

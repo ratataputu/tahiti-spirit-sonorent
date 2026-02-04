@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tarifs – Tahiti Spirit Sono Rent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <!-- ta navbar actuelle — garde la même -->
+  </header>
+
+  <main>
+      <h1>Nos Tarifs</h1>
+
+      <!-- COLLE ICI la section tarifs qui est actuellement sur la page d’accueil -->
+  </main>
+
+  <footer>
+    <!-- ton footer -->
+  </footer>
+
+</body>
+</html>

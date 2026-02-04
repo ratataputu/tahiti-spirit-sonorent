@@ -554,11 +554,14 @@
       </div>
     </a>
 
-    <!-- BOUTON HAMBURGER -->
-    <div class="hamburger" id="hamburger">
-      ☰
-    </div>
+    <!-- Bouton hamburger premium -->
+    <button class="menuBtn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks">
+      <span class="bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
 
+    <!-- Menu desktop (reste visible) + menu mobile (drawer) -->
     <nav class="navlinks" id="navlinks">
       <a href="#packs">Packs</a>
       <a href="/tarifs.html">Tarifs</a>
@@ -566,7 +569,11 @@
       <a href="#devis">Devis</a>
     </nav>
   </div>
+
+  <!-- Overlay (mobile) -->
+  <div class="menuOverlay" id="menuOverlay" aria-hidden="true"></div>
 </header>
+
 
 <main id="top" class="container">
 
@@ -870,6 +877,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

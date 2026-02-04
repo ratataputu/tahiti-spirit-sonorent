@@ -540,6 +540,150 @@
         display: flex;
      }
    }
+    /* =========================================================
+   MENU HAMBURGER PREMIUM (glass + animé + overlay)
+   ========================================================= */
+
+.menuBtn{
+  display:none; /* visible uniquement sur mobile */
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+}
+.menuBtn:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+.menuBtn:active{ transform: translateY(1px); }
+
+.menuBtn .bars{
+  width: 22px;
+  height: 16px;
+  display: grid;
+  gap: 5px;
+  margin: 0 auto;
+}
+.menuBtn .bars span{
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(244,246,251,.95);
+  transition: transform .22s ease, opacity .18s ease, width .22s ease;
+}
+
+/* Overlay (mobile) */
+.menuOverlay{
+  display:none;
+}
+
+/* ------- MOBILE ------- */
+@media (max-width: 900px){
+  /* Header en 2 lignes propre */
+  .nav{
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Bouton visible */
+  .menuBtn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Menu desktop caché sur mobile, devient dropdown premium */
+  .navlinks{
+    position: absolute;
+    right: 24px;
+    top: 74px;
+    width: min(320px, calc(100vw - 48px));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(18,20,27,.86);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.55);
+
+    /* animé */
+    opacity: 0;
+    transform: translateY(-8px) scale(.98);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    z-index: 9999;
+  }
+
+  .navlinks a{
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(255,255,255,.03);
+    transition: background .18s ease, border-color .18s ease, transform .08s ease;
+  }
+  .navlinks a:hover{
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.10);
+  }
+  .navlinks a:active{
+    transform: translateY(1px);
+  }
+
+  /* OPEN state */
+  header.menu-open .navlinks{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Overlay actif */
+  .menuOverlay{
+    display:block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease;
+    z-index: 9998;
+  }
+  header.menu-open .menuOverlay{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hamburger -> X */
+  header.menu-open .menuBtn .bars span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+  }
+  header.menu-open .menuBtn .bars span:nth-child(2){
+    opacity: 0;
+    width: 0;
+  }
+  header.menu-open .menuBtn .bars span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Optionnel: si ça déborde, on coupe le texte de marque */
+  .brand span{
+    max-width: 40ch;
+  }
+}
+
+/* ------- DESKTOP ------- */
+@media (min-width: 901px){
+  /* Sur desktop : menu normal, pas d'overlay */
+  .menuOverlay{ display:none !important; }
+}
+
   </style>
 </head>
 
@@ -877,6 +1021,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

@@ -438,7 +438,27 @@
       opacity: 1 !important;
       pointer-events: auto !important;
    }
+    /* =========================================================
+   BOOQABLE — éviter que les lignes d'articles recouvrent la barre période
+   ========================================================= */
 
+/* 1) La barre période au-dessus de tout (et collée en haut dans le scroll) */
+    #booqable-sidebar-inner .ts-orderbar{
+      position: sticky !important;
+      top: 0 !important;               /* dans la zone scrollable */
+      z-index: 999 !important;         /* au-dessus des articles */
+      margin-bottom: 12px !important;  /* espace sous la barre */
+   }
+
+/* 2) Petit padding global du contenu du panier (évite que ça colle) */
+    #booqable-sidebar-inner #booqable-sidebar-lines{
+      padding-top: 10px !important;
+   }
+
+/* 3) Fallback : si le DOM le permet, on pousse le bloc qui suit la barre */
+    #booqable-sidebar-inner .ts-orderbar + *{
+      margin-top: 10px !important;
+   }
   </style>
 </head>
 
@@ -756,6 +776,7 @@ ${name}`
 </script>
 </body>
 </html>
+
 
 
 

@@ -289,6 +289,19 @@
       border: 1px solid rgba(110,231,255,.25);
       color: var(--text);
    }
+    /* FORCER LE STYLE DES LISTES DÉROULANTES (SELECT) */
+select, 
+select option {
+  background-color: rgba(18,20,27,0.92) !important;  /* fond foncé identique au site */
+  color: #f4f6fb !important;                         /* texte blanc */
+  border: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+select:focus {
+  outline: none !important;
+  border-color: rgba(110,231,255,0.45) !important;   /* léger bleu néon, comme l'accent */
+}
+
 
   </style>
 </head>

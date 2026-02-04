@@ -518,6 +518,39 @@
     window.addEventListener("pageshow", closeMenu);
   })();
 </script>
+  
+<script>
+(function(){
+  const links = document.querySelectorAll("nav a");
+
+  // URL complète
+  const url = window.location.href;
+
+  links.forEach(a => {
+    const href = a.getAttribute("href");
+
+    // 1. Page Tarifs → mettre Tarifs en active
+    if (url.includes("tarifs.html") && href.includes("tarifs.html")) {
+      a.classList.add("active");
+    }
+
+    // 2. Ancre Packs
+    if (href.endsWith("#packs") && url.endsWith("#packs")) {
+      a.classList.add("active");
+    }
+
+    // 3. Ancre Options
+    if (href.endsWith("#options") && url.endsWith("#options")) {
+      a.classList.add("active");
+    }
+
+    // 4. Ancre Devis
+    if (href.endsWith("#devis") && url.endsWith("#devis")) {
+      a.classList.add("active");
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -18,55 +18,55 @@
 
       <!-- COLLE ICI la section tarifs qui est actuellement sur la page d’accueil -->
 <!-- TARIFS -->
-  <section id="tarifs">
-    <div class="sectionHead">
-      <div><h2>Tarifs à l’unité</h2></div>
+      <section id="tarifs">
+        <div class="sectionHead">
+          <div><h2>Tarifs à l’unité</h2></div>
 
-      <div class="controls">
-        <input id="search" class="input" type="search" placeholder="Rechercher (ex: X32, lyre, U4…)" />
-        <select id="category" class="select">
-          <option value="all">Toutes catégories</option>
-          <option value="enceintes">Enceintes</option>
-          <option value="subs">Subs</option>
-          <option value="micros">Micros</option>
-          <option value="consoles">Consoles</option>
-          <option value="inear">In-ear</option>
-          <option value="lumieres">Lumière / Fumée</option>
-          <option value="stands">Pieds / supports</option>
-          <option value="studio">Studio / Monitoring</option>
-          <option value="accessoires">Accessoires</option>
-        </select>
-      </div>
-    </div>
+          <div class="controls">
+            <input id="search" class="input" type="search" placeholder="Rechercher (ex: X32, lyre, U4…)" />
+            <select id="category" class="select">
+              <option value="all">Toutes catégories</option>
+              <option value="enceintes">Enceintes</option>
+              <option value="subs">Subs</option>
+              <option value="micros">Micros</option>
+              <option value="consoles">Consoles</option>
+              <option value="inear">In-ear</option>
+              <option value="lumieres">Lumière / Fumée</option>
+              <option value="stands">Pieds / supports</option>
+              <option value="studio">Studio / Monitoring</option>
+              <option value="accessoires">Accessoires</option>
+            </select>
+          </div>
+        </div>
 
-    <table aria-label="Tarifs de location">
-      <thead>
-        <tr>
-          <th>Équipement</th>
-          <th>Catégorie</th>
-          <th>Prix / jour</th>
-          <th class="muted">Notes</th>
-        </tr>
-      </thead>
-      <tbody id="tarifsBody">
-        <tr data-cat="enceintes"><td><b>Alto TS415 (15")</b></td><td>Enceintes</td><td><b>45 €</b></td><td class="muted">Pack x2 : 80 €</td></tr>
-        <tr data-cat="enceintes"><td><b>Alto TS412 (12")</b></td><td>Enceintes</td><td><b>40 €</b></td><td class="muted">Pack x2 : 70 €</td></tr>
-        <tr data-cat="subs"><td><b>Alto TS18S (sub 18")</b></td><td>Subs</td><td><b>60 €</b></td><td class="muted">Pack x2 : 100 € • Pack x4 : 180 €</td></tr>
-        <tr data-cat="consoles"><td><b>Behringer X32</b></td><td>Consoles</td><td><b>70 €</b></td><td class="muted">Console 32 canaux (pro)</td></tr>
-        <tr data-cat="consoles"><td><b>Behringer X32 Rack</b></td><td>Consoles</td><td><b>50 €</b></td><td class="muted">Idéal groupe / in-ear</td></tr>
-        <tr data-cat="inear"><td><b>Xvive U4 (émetteur + 1 récepteur)</b></td><td>In-ear</td><td><b>20 €</b></td><td class="muted">Retours in-ear sans fil</td></tr>
-        <tr data-cat="inear"><td><b>Récepteur Xvive U4R (supplémentaire)</b></td><td>In-ear</td><td><b>10 €</b></td><td class="muted">Pour ajouter des musiciens</td></tr>
-        <tr data-cat="micros"><td><b>Shure SM58</b></td><td>Micros</td><td><b>10 €</b></td><td class="muted">Pack 6 : 45 €</td></tr>
-        <tr data-cat="lumieres"><td><b>Lyre Spot MaxiSpot 30</b></td><td>Lumière / Fumée</td><td><b>25 €</b></td><td class="muted">Pack x4 : 80 €</td></tr>
-        <tr data-cat="lumieres"><td><b>PAR LED Party PAR 123</b></td><td>Lumière / Fumée</td><td><b>10 €</b></td><td class="muted">Pack x6 : 45 €</td></tr>
-        <tr data-cat="lumieres"><td><b>Machine à fumée Chauvet Hurricane 1200</b></td><td>Lumière / Fumée</td><td><b>15 €</b></td><td class="muted">Liquide possible en option</td></tr>
-        <tr data-cat="stands"><td><b>Pied d’enceinte</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Selon pack / dispo</td></tr>
-        <tr data-cat="stands"><td><b>Barre M20 (sub → enceinte)</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Recommandé avec subs</td></tr>
-        <tr data-cat="accessoires"><td><b>DI (1 canal)</b></td><td>Accessoires</td><td><b>4 €</b></td><td class="muted">Clavier / guitare / basse</td></tr>
-        <tr data-cat="accessoires"><td><b>Pack câbles (selon besoin)</b></td><td>Accessoires</td><td><b>5–10 €</b></td><td class="muted">XLR / jack / DMX</td></tr>
-      </tbody>
-    </table>
-  </section>
+        <table aria-label="Tarifs de location">
+          <thead>
+            <tr>
+              <th>Équipement</th>
+              <th>Catégorie</th>
+              <th>Prix / jour</th>
+              <th class="muted">Notes</th>
+            </tr>
+          </thead>
+          <tbody id="tarifsBody">
+            <tr data-cat="enceintes"><td><b>Alto TS415 (15")</b></td><td>Enceintes</td><td><b>45 €</b></td><td class="muted">Pack x2 : 80 €</td></tr>
+            <tr data-cat="enceintes"><td><b>Alto TS412 (12")</b></td><td>Enceintes</td><td><b>40 €</b></td><td class="muted">Pack x2 : 70 €</td></tr>
+            <tr data-cat="subs"><td><b>Alto TS18S (sub 18")</b></td><td>Subs</td><td><b>60 €</b></td><td class="muted">Pack x2 : 100 € • Pack x4 : 180 €</td></tr>
+            <tr data-cat="consoles"><td><b>Behringer X32</b></td><td>Consoles</td><td><b>70 €</b></td><td class="muted">Console 32 canaux (pro)</td></tr>
+            <tr data-cat="consoles"><td><b>Behringer X32 Rack</b></td><td>Consoles</td><td><b>50 €</b></td><td class="muted">Idéal groupe / in-ear</td></tr>
+            <tr data-cat="inear"><td><b>Xvive U4 (émetteur + 1 récepteur)</b></td><td>In-ear</td><td><b>20 €</b></td><td class="muted">Retours in-ear sans fil</td></tr>
+            <tr data-cat="inear"><td><b>Récepteur Xvive U4R (supplémentaire)</b></td><td>In-ear</td><td><b>10 €</b></td><td class="muted">Pour ajouter des musiciens</td></tr>
+            <tr data-cat="micros"><td><b>Shure SM58</b></td><td>Micros</td><td><b>10 €</b></td><td class="muted">Pack 6 : 45 €</td></tr>
+            <tr data-cat="lumieres"><td><b>Lyre Spot MaxiSpot 30</b></td><td>Lumière / Fumée</td><td><b>25 €</b></td><td class="muted">Pack x4 : 80 €</td></tr>
+            <tr data-cat="lumieres"><td><b>PAR LED Party PAR 123</b></td><td>Lumière / Fumée</td><td><b>10 €</b></td><td class="muted">Pack x6 : 45 €</td></tr>
+            <tr data-cat="lumieres"><td><b>Machine à fumée Chauvet Hurricane 1200</b></td><td>Lumière / Fumée</td><td><b>15 €</b></td><td class="muted">Liquide possible en option</td></tr>
+            <tr data-cat="stands"><td><b>Pied d’enceinte</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Selon pack / dispo</td></tr>
+            <tr data-cat="stands"><td><b>Barre M20 (sub → enceinte)</b></td><td>Pieds / supports</td><td><b>5 €</b></td><td class="muted">Recommandé avec subs</td></tr>
+            <tr data-cat="accessoires"><td><b>DI (1 canal)</b></td><td>Accessoires</td><td><b>4 €</b></td><td class="muted">Clavier / guitare / basse</td></tr>
+            <tr data-cat="accessoires"><td><b>Pack câbles (selon besoin)</b></td><td>Accessoires</td><td><b>5–10 €</b></td><td class="muted">XLR / jack / DMX</td></tr>
+          </tbody>
+        </table>
+      </section>
 
   </main>
 
